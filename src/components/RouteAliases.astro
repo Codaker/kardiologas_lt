@@ -1,19 +1,23 @@
 ---
 import { getCollection } from 'astro:content';
 import { withBase } from '../lib/urls';
-const posts = await getCollection('pages');
-const ids = Object.fromEntries(
-  posts
-    .filter((p) => p.data.wordpressId)
-    .map((p) => [p.data.wordpressId, withBase(p.data.path)]),
+const pages = await getCollection('pages');
+const aliases = Object.fromEntries(
+  pages.flatMap((page) =>
+    page.data.queryAliases.map((query) => [query, withBase(page.data.path)]),
+  ),
 );
 const searchPath = withBase('/paieska/');
 ---
 
-<script define:vars={{ ids, searchPath }}>
+<script define:vars={{ aliases, searchPath }}>
   const query = new URLSearchParams(location.search);
   const search = query.get('s');
-  const target = ids[query.get('p') || query.get('page_id')];
+  const target = Object.entries(aliases).find(([alias]) =>
+    [...new URLSearchParams(alias)].every(
+      ([key, value]) => query.get(key) === value,
+    ),
+  )?.[1];
   if (search) location.replace(searchPath + '?s=' + encodeURIComponent(search));
   else if (target && target !== location.pathname)
     location.replace(target + location.hash);

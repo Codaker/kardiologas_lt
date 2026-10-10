@@ -1,6 +1,6 @@
 # kardiologas.lt — Astro static migration
 
-A Lithuanian static site migrated from the [10 August 2025 Wayback snapshot](https://web.archive.org/web/20250810004903/https://kardiologas.lt/). Pages, articles, homepage slides, feature panels, FAQ answers, and shared settings live in Markdown. Builds need no WordPress server or archive access.
+A Lithuanian static site migrated from the [10 August 2025 Wayback snapshot](https://web.archive.org/web/20250810004903/https://kardiologas.lt/). Pages, articles, homepage slides, feature panels, FAQ answers, and shared settings live in Markdown. Astro generates the complete static site; builds need no application server or archive access.
 
 ## Run locally
 
@@ -50,10 +50,26 @@ npm run verify
 | `src/content/slides/`          | Two photo slides and the location-map slide                                       |
 | `src/content/features/`        | Opening hours, registration, qualifications                                       |
 | `src/content/faq/`             | Expandable questions and Markdown answers                                         |
-| `src/content/settings/site.md` | Logo paths, contact details, navigation, videos and footer copy                   |
-| `public/wp-content/uploads/`   | Recovered original media at their original paths                                  |
+| `src/content/settings/site.md` | Source images, contact details, navigation, videos and footer copy                |
+| `src/assets/images/brand/`     | Original header and footer logos                                                  |
+| `src/assets/images/clinic/`    | Doctor photo, carousel photo and video poster                                     |
+| `src/assets/images/equipment/` | Original equipment photos used in articles                                        |
+| `src/components/Icon.astro`    | Small inline SVG icons, without an icon font                                      |
+| `public/`                      | Files copied unchanged with a fixed URL, currently only `.nojekyll`               |
 
-Content collections have schemas in `src/content.config.ts`; pages are prerendered through `src/pages/[...path].astro`. Standard Markdown is used for prose. Images retain HTML attributes where needed to preserve their original dimensions and alignment. Video/iframe markup remains in Markdown. Local URLs are rewritten at build time, including inside HTML.
+Content collections have schemas in `src/content.config.ts`; pages are prerendered through `src/pages/[...path].astro`. Standard Markdown is used for prose. Existing iframe embeds remain in Markdown. Local URLs are rewritten at build time, including inside HTML.
+
+### Images and other assets
+
+Keep source images in `src/assets/images/`, organized by purpose. Markdown frontmatter uses relative paths, validated by the collection schema's `image()` helper:
+
+```yaml
+illustration:
+  src: '../../assets/images/equipment/holter-monitor.jpg'
+  alt: 'Holterio monitorius'
+```
+
+Components render these values with `Image` from `astro:assets`. Astro reads dimensions, produces optimized WebP files and generates responsive variants for carousel photos, logos and the video poster. The first hero image loads eagerly; other photos load lazily. Original image bytes are retained in source control, without manually maintained thumbnail copies. Generated files live under `dist/_astro/` and must not be edited. Styles and scripts belong in `src/`; Rubik and Open Sans are bundled locally from Fontsource. Use `public/` only for assets that must retain an exact filename and bypass processing. See [Astro's image guide](https://docs.astro.build/en/guides/images/).
 
 ## Preserved behavior and limitations
 
@@ -61,31 +77,21 @@ Content collections have schemas in `src/content.config.ts`; pages are prerender
 - The two page-2 listings were reconstructed from the recovered category archive because their direct captures were unavailable.
 - Original logos, doctor/equipment photos, video thumbnail, Rubik/Open Sans fonts, blue/white layout, sidebars and footer structure.
 - Three-slide fade carousel, animated letters and opposing slide-in headings, dropdown transitions, mobile navigation, accordion expansion, play-button hover, video dialog, contact-section flip-in, and smooth back-to-top behavior. Reduced-motion preferences disable motion and autoplay; carousel playback pauses on hover/focus and can be paused manually.
-- Static search, including old `/?s=…` links, and redirects for recognized WordPress `/?p=…` and `/?page_id=…` links. These query redirects require JavaScript. `/feed/` points to the static RSS feed.
-- The original WordPress contact form required a server. Its static replacement opens a **mailto draft** in the visitor's email app; it does not submit or claim to send a message. Original booking links are retained.
+- Static search, including old `/?s=…` links, and existing query links recorded in each page's `queryAliases`. These redirects require JavaScript. `/feed/` points to the static RSS feed.
+- The contact form opens a **mailto draft** in the visitor's email app; it does not submit or claim to send a message. Original booking links are retained.
 - Maps and YouTube players still require their external providers. They load lazily or on interaction.
+- External website links open in a new tab with `rel="noopener noreferrer"`, including links in Markdown and embedded HTML. Internal navigation, phone and email links retain their normal behavior. Video play buttons open the in-page dialog; their no-JavaScript fallback links open in a new tab.
 
-Seven source assets could not be recovered: one consultation image, four decorative backgrounds, and two MP4s. Details are recorded in `docs/unavailable-media.json`. The article Markdown retains original media references, but the build omits missing image/video elements; existing YouTube alternatives remain. Restore a file under its original `public/` path and rebuild to include it automatically. No stock replacements were invented. The old Holter thumbnail URL serves its recovered original-size photo.
+Three previously missing images were recovered from the supplied local backup: the About illustration, page title background, and contact section background. They now live in `src/assets/images/clinic/` and `src/assets/images/backgrounds/` and render through Astro's image pipeline. See `docs/media-recovery.md`.
+
+Four source assets remain unavailable: the exact consultation image crop, feature section background, and two MP4s. Details are recorded in `docs/unavailable-media.json`. Missing elements have been removed from the content; existing YouTube alternatives remain. No stock replacements were invented. Page URLs remain unchanged, while all local image URLs are now generated by Astro.
 
 Text and contact information are migrated as archived, including inconsistent hours and historical phone formatting; they have not been editorially updated.
 
 ## Verification
 
-`npm run verify` checks every manifest route, local links/assets, image validity and alt text, base paths, language, headings and metadata in the built HTML.
+`npm run verify` checks every manifest route, local links/assets, responsive image variants, image validity, dimensions and alt text, base paths, language, headings and metadata in the built HTML. It also rejects obsolete CMS resources in the output.
 
 After building, `npm run test:browser` uses installed Microsoft Edge and starts a temporary static server to check all preserved routes, desktop/mobile overflow, navigation, carousel, FAQ, video dialog, search, form validation, reduced motion and no-JavaScript rendering. Set `PREVIEW_URL` to test a separately running preview instead. Screenshots and results are written to ignored `test-results/`.
 
-## Archive import tools
-
-The committed Markdown and media are sufficient for development and deployment. To repeat source collection intentionally:
-
-```sh
-node scripts/crawl-archive.mjs
-node scripts/download-assets.mjs
-node scripts/recover-assets.mjs
-node scripts/recover-missing.mjs
-node scripts/clean-import-assets.mjs
-npm run migrate:archive
-```
-
-These tools use `curl.exe` on Windows and cache source captures in ignored `.cache/`. **Reimporting overwrites Markdown edits.** Archive availability and nearest capture dates vary; each page records its source, and `docs/asset-manifest.json` records recovered files. Normal builds never crawl or fetch the archive.
+The committed Markdown and source assets are sufficient for development and deployment. Each page retains its archive source for provenance. Normal builds never crawl or fetch the archive.

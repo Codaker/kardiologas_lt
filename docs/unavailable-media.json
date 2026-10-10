@@ -1,9 +1,22 @@
 [
-  {"path":"/wp-content/uploads/2025/07/medici-slider-3-1-e1752741478152-300x207.jpg","kind":"image","note":"Consultation illustration and both original-size filename variants return archive 404."},
-  {"path":"/wp-content/uploads/2018/09/about-us.png","kind":"decoration","note":"About page background returns archive 404, with and without the original query string."},
-  {"path":"/wp-content/uploads/2018/09/breadcrumb_1.png","kind":"decoration","note":"Page title background returns archive 404."},
-  {"path":"/wp-content/uploads/2018/11/background-get-in-touch.png","kind":"decoration","note":"Contact section background returns archive 404."},
-  {"path":"/vendor/medici.wp1.zootemplate.com/wp-content/uploads/2018/11/background-feature.png","kind":"decoration","note":"Original theme demo background URL returns archive 404."},
-  {"path":"/wp-content/uploads/2024/06/Coronary-artery-anatomy-Coronary-angiogram.mp4.mp4","kind":"video","note":"Archive has no successful media capture. The page's original YouTube embed is retained."},
-  {"path":"/wp-content/uploads/2024/06/Cardiac-Catheterization-and-Stenting.mp4.mp4","kind":"video","note":"Archive has no successful media capture. The page's original YouTube embed is retained."}
+  {
+    "name": "Consultation illustration",
+    "kind": "image",
+    "note": "The exact edited image was absent from both the archive and the supplied local backup. An older uncropped source was found, but has not been substituted for the missing crop."
+  },
+  {
+    "name": "Feature section background",
+    "kind": "decoration",
+    "note": "No successful archive capture was available, and no matching image was found in the supplied local backup."
+  },
+  {
+    "name": "Coronary artery anatomy and angiogram",
+    "kind": "video",
+    "note": "Absent from the archive and supplied local backup. The article retains its YouTube embed."
+  },
+  {
+    "name": "Cardiac catheterization and stenting",
+    "kind": "video",
+    "note": "Absent from the archive and supplied local backup. The article retains its YouTube embed."
+  }
 ]

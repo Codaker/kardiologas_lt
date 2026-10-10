@@ -1,7 +1,8 @@
 ---
+import { getEntry } from 'astro:content';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import LegacyQueries from '../components/LegacyQueries.astro';
+import RouteAliases from '../components/RouteAliases.astro';
 import { withBase } from '../lib/urls';
 import '@fontsource/rubik/latin-ext-400.css';
 import '@fontsource/rubik/latin-400.css';
@@ -26,6 +27,7 @@ const {
   path = '/',
   noindex = false,
 } = Astro.props;
+const site = (await getEntry('settings', 'site'))!.data;
 const canonical = new URL(withBase(path), Astro.site);
 ---
 
@@ -43,21 +45,10 @@ const canonical = new URL(withBase(path), Astro.site);
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="lt_LT" />
     <meta property="og:url" content={canonical} />
-    <meta
-      property="og:image"
-      content={
-        new URL(
-          withBase('/wp-content/uploads/2019/04/logotipas.jpg'),
-          Astro.site,
-        )
-      }
-    />
-    <link
-      rel="icon"
-      href={withBase('/wp-content/uploads/2019/04/logotipas.jpg')}
-    />
+    <meta property="og:image" content={new URL(site.logo.src, Astro.site)} />
+    <link rel="icon" href={site.logo.src} />
     <meta name="theme-color" content="#2e9ce6" />
-    {path === '/' && <LegacyQueries />}
+    {path === '/' && <RouteAliases />}
   </head>
   <body>
     <Header path={path} />

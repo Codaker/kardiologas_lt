@@ -12,5 +12,5 @@ entries:
     '/apie-koronarografija-vainikiniu-arteriju-angiografija-sirdies-kraujagysliu-zondavimas/',
   ]
 source: 'https://web.archive.org/web/20250219050958id_/https://www.kardiologas.lt/informacija-pacientui/'
-wordpressId: 2928
+queryAliases: ['p=2928', 'page_id=2928']
 ---

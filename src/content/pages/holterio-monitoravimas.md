@@ -7,10 +7,11 @@ excerpt: 'Šio tyrimo metu pacientui ant krūtinės pritvirtinami 4 lipdukai-ele
 categories: ['paslaugos-ir-tyrimai']
 entries: []
 source: 'https://web.archive.org/web/20250813012741id_/https://kardiologas.lt/holterio-monitoravimas/'
-wordpressId: 3546
+queryAliases: ['p=3546', 'page_id=3546']
+illustration:
+  src: '../../assets/images/equipment/holter-monitor.jpg'
+  alt: 'Holterio Monitoravimas'
 ---
-
-<img fetchpriority="high" decoding="async" class="size-full wp-image-3547 alignright" src="/wp-content/uploads/2019/04/Holter-monitor.jpg" alt="Kardiologijos tyrimo įranga" width="225" height="225" loading="lazy">
 
 Šio tyrimo metu pacientui ant krūtinės pritvirtinami 4 lipdukai-elektrodai, kurie sujungiami su mažu, apie 180 g sveriančiu aparatuku. Jis pritvirtinamas ant juosmens su elastine juosta. Pacientas parą laiko nešioja aparatą. Po to jis nuimamas, prijungiamas prie kompiuterio ir specialia programa analizuojami duomenys. Nustatoma kiek ir kokios rūšies ritmo sutrikimų buvo per parą, kokį tolimesnį gydymą reikia paskirti.
 

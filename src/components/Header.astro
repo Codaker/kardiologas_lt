@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
 import { getEntry } from 'astro:content';
 import { withBase } from '../lib/urls';
 const site = (await getEntry('settings', 'site'))!.data;
@@ -11,8 +13,7 @@ const { path = '/' } = Astro.props;
 <div class="topbar">
   <div class="container topbar-inner">
     <a href={`tel:${site.phoneHref}`}>
-      <i class="cs-font clever-icon-phone-2 blue" aria-hidden="true"></i>{' '}
-      {site.phone}
+      <Icon name="phone" class="blue" /> {site.phone}
     </a>
     <a href={`mailto:${site.email}`}>
       <span aria-hidden="true">✉</span> {site.email.replace('@', '[@]')}
@@ -28,7 +29,13 @@ const { path = '/' } = Astro.props;
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href={withBase('/')} aria-label="Pulsas – Pradžia">
-      <img src={withBase(site.logo)} width="113" height="60" alt="Pulsas" />
+      <Image
+        src={site.logo}
+        width={113}
+        densities={[1, 2]}
+        loading="eager"
+        alt="Pulsas"
+      />
       <span>Kardiologijos kabinetas "PULSAS"</span>
     </a>
     <button
@@ -67,7 +74,7 @@ const { path = '/' } = Astro.props;
               aria-expanded="false"
               aria-controls="services-menu"
             >
-              ⌄
+              <Icon name="chevron-down" />
             </button>
           </div>
           <ul id="services-menu" class="submenu">
@@ -102,7 +109,7 @@ const { path = '/' } = Astro.props;
               aria-expanded="false"
               aria-controls="other-menu"
             >
-              ⌄
+              <Icon name="chevron-down" />
             </button>
           </div>
           <ul id="other-menu" class="submenu">

@@ -1,12 +1,16 @@
 ---
-import { backgroundFor } from '../lib/assets';
+import { getEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
+const site = (await getEntry('settings', 'site'))!.data;
+const background = await getImage({
+  src: site.contactBackground,
+  format: 'webp',
+});
 ---
 
 <section
   class="contact-form-section"
-  style={backgroundFor(
-    '/wp-content/uploads/2018/11/background-get-in-touch.png',
-  )}
+  style={`background-image: url("${background.src}")`}
 >
   <div class="container">
     <h2 class="section-heading">Susisiekite su mumis</h2>

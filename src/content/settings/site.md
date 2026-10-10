@@ -7,8 +7,10 @@ email: 'kardiologas@yahoo.com'
 address: '56 Sodų gatvė, Kaunas'
 hours: 'Pirmadienis-Penktadienis: 11.00 - 19.00 / Savaitgaliais nedirbame'
 registrationHours: '12:00 – 14:00'
-logo: '/wp-content/uploads/2019/04/logotipas.jpg'
-footerLogo: '/wp-content/uploads/2019/04/cropped-logotipas.jpg'
+logo: '../../assets/images/brand/pulsas-logo.jpg'
+footerLogo: '../../assets/images/brand/pulsas-logo-footer.jpg'
+pageBackground: '../../assets/images/backgrounds/page-title.png'
+contactBackground: '../../assets/images/backgrounds/contact-texture.png'
 services:
   [
     { 'title': 'Kardiologo Konsultacija', 'path': '/kardiologo-konsultacija/' },
@@ -28,7 +30,7 @@ map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2295.822548447569!2d
 video: 'https://www.youtube.com/embed/pMh1-heVccM'
 videoTitle: 'Kodėl verta konsultuotis PULSE'
 faqTitle: 'Dažniausiai užduodami klausimai'
-videoPoster: '/wp-content/uploads/2019/05/video_thumb.png'
+videoPoster: '../../assets/images/clinic/consultation-video.png'
 patientTitle: 'Informacija Pacientui'
 ---
 

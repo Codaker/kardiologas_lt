@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  illustration: CollectionEntry<'pages'>['data']['illustration'];
+}
+const { illustration } = Astro.props;
+---
+
+{illustration && (
+  <Image
+    class="article-illustration"
+    src={illustration.src}
+    alt={illustration.alt}
+    loading="lazy"
+  />
+)}

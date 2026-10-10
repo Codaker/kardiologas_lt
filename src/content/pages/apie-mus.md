@@ -7,7 +7,10 @@ excerpt: ''
 categories: []
 entries: []
 source: 'https://web.archive.org/web/20250810004111id_/https://kardiologas.lt/apie-mus/'
-wordpressId: 2165
+queryAliases: ['p=2165', 'page_id=2165']
+illustration:
+  src: '../../assets/images/clinic/medical-team.png'
+  alt: 'Medicinos specialistų iliustracija'
 ---
 
 ## V. Griniaus konsultacinis diagnostinis kabinetas “Pulsas”

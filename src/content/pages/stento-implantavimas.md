@@ -7,7 +7,7 @@ excerpt: 'Kas yra širdies kraujagyslės stentavimas? Stentavimas – tai proced
 categories: ['informacija-pacientui']
 entries: []
 source: 'https://web.archive.org/web/20250810001320id_/https://kardiologas.lt/stento-implantavimas/'
-wordpressId: 3621
+queryAliases: ['p=3621', 'page_id=3621']
 ---
 
 ### **Kas yra širdies kraujagyslės stentavimas?**
@@ -87,7 +87,5 @@ Po stentavimo pacientas privalo vartoti šiuos vaistus:
 **Dėmesio, tai informacinio pobūdžio informacija apie tyrimą. Pas mus šis gydymo būdas  neatliekamas, bet esant medicininei būtinybei (indikacijai), tai įvertinus konsultacijos metu, galime pasiųsti šį gydymo būdą  atlikti. Pastaba – ar reikia atlikti stentavimą, nusprendžiama  tik prieš tai atlikus koronarografiją.**
 
 Apie stento implantavimą į širdį maitinančią arteriją galite pasižiūrėti čia:
-
-<video class="wp-video-shortcode" id="video-3621-2" width="992" height="558" preload="metadata" controls="controls"><source type="video/mp4" src="/wp-content/uploads/2024/06/Cardiac-Catheterization-and-Stenting.mp4.mp4?_=2"><a href="/wp-content/uploads/2024/06/Cardiac-Catheterization-and-Stenting.mp4.mp4">http://www.kardiologas.lt/wp-content/uploads/2024/06/Cardiac-Catheterization-and-Stenting.mp4.mp4</a></video>
 
 <iframe title="What is a stent, and how does it work?" width="992" height="744" src="https://www.youtube.com/embed/OG-5tQ7oNkQ?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" id="yt-OG-5tQ7oNkQ" loading="lazy"></iframe>

@@ -7,7 +7,7 @@ excerpt: 'Kaip pacientui (-ei) pasiruošti tiesioginei konsultacijai (atvykstant
 categories: ['informacija-pacientui', 'paslaugos-ir-tyrimai']
 entries: []
 source: 'https://web.archive.org/web/20250813013755id_/https://kardiologas.lt/kaip-pasiruosti-pries-konsultacija/'
-wordpressId: 3700
+queryAliases: ['p=3700', 'page_id=3700']
 ---
 
 ### **Kaip pacientui (-ei) pasiruošti tiesioginei konsultacijai (atvykstant į kabinetą)**

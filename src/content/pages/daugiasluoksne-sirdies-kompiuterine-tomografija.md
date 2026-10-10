@@ -7,7 +7,7 @@ excerpt: 'Dėmesio, tai informacinio pobūdžio informacija apie tyrimą. Pas mu
 categories: ['informacija-pacientui']
 entries: []
 source: 'https://web.archive.org/web/20250810004903/https://kardiologas.lt/daugiasluoksne-sirdies-kompiuterine-tomografija/'
-wordpressId: 3615
+queryAliases: ['p=3615', 'page_id=3615']
 ---
 
 **Dėmesio, tai informacinio pobūdžio informacija apie tyrimą. Pas mus šis tyrimas neatliekamas, bet esant medicininei būtinybei (indikacijai), tai įvertinus konsultacijos metu, galime pasiųsti šį tyrimą atlikti.** Daugiasluoksnė širdies vainikinių arterijų kompiuterinė tomografija (VA DKT) – vaizdinis metodas, kuris leidžia vizualizuoti (pamatyti) širdies vainikines arterijas be invazinės procedūros (be zondavimo-koronarografijos).Procedūra atliekama aparatu – kompiuteriniu tomografu, suleidžiant į veną tirpalo su jodu. Po to širdis skenuojama, daroma serija virtualių pjūvių ir suformuojamas širdies raumenį matinančių vainikinių arterijų vaizdas. Tai galite pamatyti šiuose vaizdo filmukuose:

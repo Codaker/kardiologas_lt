@@ -11,7 +11,9 @@ import VideoFaq from '../components/VideoFaq.astro';
 import Sidebar from '../components/Sidebar.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { withBase } from '../lib/urls';
-import { backgroundFor } from '../lib/assets';
+import Icon from '../components/Icon.astro';
+import ArticleImage from '../components/ArticleImage.astro';
+import { Image, getImage } from 'astro:assets';
 export async function getStaticPaths() {
   return (await getCollection('pages')).map((page) => ({
     params: {
@@ -29,6 +31,9 @@ interface Props {
 const { page } = Astro.props;
 const { Content } = await render(page);
 const site = (await getEntry('settings', 'site'))!.data;
+const pageBackground = ['about', 'listing', 'contact'].includes(page.data.type)
+  ? await getImage({ src: site.pageBackground, format: 'webp' })
+  : undefined;
 const pages = await getCollection('pages');
 const features = await Promise.all(
   (await getCollection('features'))
@@ -60,19 +65,11 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
   {page.data.type === 'home' && (
     <>
       <Slider />
-      <section
-        class="feature-band"
-        style={backgroundFor(
-          '/vendor/medici.wp1.zootemplate.com/wp-content/uploads/2018/11/background-feature.png',
-        )}
-      >
+      <section class="feature-band">
         <div class="container feature-grid">
           {features.map((feature) => (
             <div class="feature">
-              <i
-                class:list={['cs-font', feature.data.icon]}
-                aria-hidden="true"
-              ></i>
+              <Icon name={feature.data.icon} />
               <h2>{feature.data.title}</h2>
               <div>
                 <feature.Content />
@@ -96,7 +93,10 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
                 <a href={withBase(article.data.path)}>{article.data.title}</a>
               </h3>
               <p>{article.data.excerpt.slice(0, 165)}…</p>
-              <a class="button small" href={withBase(article.data.path)}>
+              <a
+                class="button small read-more"
+                href={withBase(article.data.path)}
+              >
                 Skaityti Daugiau
               </a>
             </article>
@@ -110,6 +110,7 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
       <Sidebar path={page.data.path} />
       <article class="article-body prose">
         <h1>{page.data.title}</h1>
+        <ArticleImage illustration={page.data.illustration} />
         <Content />
       </article>
     </div>
@@ -118,7 +119,7 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
     <>
       <div
         class="page-banner"
-        style={backgroundFor('/wp-content/uploads/2018/09/breadcrumb_1.png')}
+        style={`background-image: url("${pageBackground!.src}")`}
       >
         <h1>{page.data.title}</h1>
         <p>
@@ -129,18 +130,26 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
         <article class="prose">
           <Content />
         </article>
-        <div
-          class="about-image"
-          style={backgroundFor('/wp-content/uploads/2018/09/about-us.png')}
-          aria-hidden="true"
-        ></div>
+        {page.data.illustration && (
+          <Image
+            class="about-image"
+            src={page.data.illustration.src}
+            alt={page.data.illustration.alt}
+            widths={[400, 800]}
+            sizes="(max-width: 700px) calc(100vw - 36px), 55vw"
+            loading="lazy"
+          />
+        )}
       </section>
       <VideoFaq video="https://www.youtube.com/embed/vbpKD-mrILo" />
     </>
   )}
   {page.data.type === 'contact' && (
     <>
-      <div class="contact-heading container">
+      <div
+        class="page-banner"
+        style={`background-image: url("${pageBackground!.src}")`}
+      >
         <h1>{page.data.title}</h1>
         <p>Registruokitės telefonu arba internetu</p>
       </div>
@@ -161,7 +170,7 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
     <>
       <div
         class="page-banner"
-        style={backgroundFor('/wp-content/uploads/2018/09/breadcrumb_1.png')}
+        style={`background-image: url("${pageBackground!.src}")`}
       >
         <h1>{page.data.title}</h1>
       </div>
@@ -217,11 +226,17 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
                 <a href={withBase(entry.data.path)}>{entry.data.title}</a>
               </h2>
               {patientListing ? (
-                <entry.Content />
+                <>
+                  <ArticleImage illustration={entry.data.illustration} />
+                  <entry.Content />
+                </>
               ) : (
                 <p>{entry.data.excerpt}…</p>
               )}
-              <a class="button small" href={withBase(entry.data.path)}>
+              <a
+                class="button small read-more"
+                href={withBase(entry.data.path)}
+              >
                 Skaityti Daugiau
               </a>
             </article>

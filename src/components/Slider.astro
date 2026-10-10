@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection, getEntry, render } from 'astro:content';
 import { withBase } from '../lib/urls';
 const slides = await Promise.all(
@@ -23,16 +24,12 @@ const site = (await getEntry('settings', 'site'))!.data;
       >
         {slide.data.type === 'image' ? (
           <>
-            <img
+            <Image
               class="slide-image"
-              src={withBase(slide.data.image)}
-              alt={
-                i === 0
-                  ? 'Gydytojas V. Grinius kardiologijos kabinete'
-                  : 'Kardiologijos tyrimai'
-              }
-              width={i === 0 ? 1920 : 1470}
-              height={i === 0 ? 1280 : 882}
+              src={slide.data.image}
+              alt={slide.data.imageAlt}
+              widths={[640, 960, 1440, slide.data.image.width]}
+              sizes="100vw"
               loading={i === 0 ? 'eager' : 'lazy'}
               fetchpriority={i === 0 ? 'high' : 'auto'}
             />

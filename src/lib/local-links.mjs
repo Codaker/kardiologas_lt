@@ -1,53 +1,39 @@
-import { readFileSync, existsSync } from 'node:fs';
-const unavailable = JSON.parse(
-  readFileSync(
-    new URL('../../docs/unavailable-media.json', import.meta.url),
-    'utf8',
-  ),
-);
-/** Localize both Markdown and embedded HTML assets at build time. */
-export function localLinks({ base = '/' } = {}) {
+/** Apply local base paths and new-tab behavior to Markdown and embedded HTML links. */
+export function localLinks({
+  base = '/',
+  site = 'https://codaker.github.io',
+} = {}) {
   const prefix = base.replace(/\/$/, '');
+  const origin = new URL(site).origin;
   return (tree) => {
     function visit(node) {
-      // Keep original references editable in Markdown. Omit only documented,
-      // unrecoverable media from HTML. Restoring the file automatically restores it.
-      if (node.children)
-        node.children = node.children.filter((child) => {
-          const source =
-            child.properties?.src ||
-            (child.tagName === 'video'
-              ? child.children?.find((c) => c.tagName === 'source')?.properties
-                  ?.src
-              : null);
-          const href = child.tagName === 'a' ? child.properties?.href : null;
-          const value = source || href;
-          const path =
-            typeof value === 'string'
-              ? value
-                  .replace(/^https?:\/\/(www\.)?kardiologas\.lt(?=\/)/, '')
-                  .split('?')[0]
-              : '';
-          return !unavailable.some(
-            (asset) =>
-              asset.path === path &&
-              !existsSync(new URL('../../public' + path, import.meta.url)),
-          );
-        });
       if (node.properties) {
+        const href = node.properties.href;
+        if (
+          node.tagName === 'a' &&
+          typeof href === 'string' &&
+          /^(https?:)?\/\//i.test(href.trim()) &&
+          new URL(href, site).origin !== origin
+        ) {
+          const rel = Array.isArray(node.properties.rel)
+            ? node.properties.rel
+            : String(node.properties.rel || '')
+                .split(/\s+/)
+                .filter(Boolean);
+          node.properties.target = '_blank';
+          node.properties.rel = [
+            ...new Set([...rel, 'noopener', 'noreferrer']),
+          ];
+        }
         for (const key of ['href', 'src', 'poster']) {
           const value = node.properties[key];
-          if (typeof value !== 'string') continue;
-          const path = value.replace(
-            /^https?:\/\/(www\.)?kardiologas\.lt(?=\/)/,
-            '',
-          );
           if (
-            path.startsWith('/') &&
-            !path.startsWith('//') &&
-            !(prefix && path.startsWith(prefix + '/'))
+            typeof value === 'string' &&
+            value.startsWith('/') &&
+            !value.startsWith('//') &&
+            !(prefix && value.startsWith(prefix + '/'))
           )
-            node.properties[key] = prefix + path;
+            node.properties[key] = prefix + value;
         }
       }
       node.children?.forEach(visit);

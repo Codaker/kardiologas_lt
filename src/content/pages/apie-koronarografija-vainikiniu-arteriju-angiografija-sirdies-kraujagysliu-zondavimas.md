@@ -7,7 +7,7 @@ excerpt: 'Informacija paremta mano ilgamete patirtimi bendradarbiaujant su DI Ko
 categories: ['informacija-pacientui']
 entries: []
 source: 'https://web.archive.org/web/20250813013944id_/https://kardiologas.lt/apie-koronarografija-vainikiniu-arteriju-angiografija-sirdies-kraujagysliu-zondavimas/'
-wordpressId: 3625
+queryAliases: ['p=3625', 'page_id=3625']
 ---
 
 **Informacija paremta mano ilgamete patirtimi bendradarbiaujant su DI**
@@ -103,8 +103,6 @@ Remiantis koronarografijos rezultatais, galime priimti vieną iš sprendimų:
 Bendras komplikacijų dažnis – labai mažas (apie 1–2 %), o gyvybei pavojingos komplikacijos – itin retos (< 0,1 %), ypač jei esate tiriamas planine tvarka.
 
 **Dėmesio, tai informacinio pobūdžio informacija apie tyrimą. Pas mus šis tyrimas neatliekamas, bet esant medicininei būtinybei (indikacijai), tai įvertinus konsultacijos metu, galime pasiųsti šį tyrimą atlikti.** Koronarografijos metu nustatoma ar susiaurėję širdį krauju aprūpinančios kraujagyslęs, kokioje vietoje, kokio laipsnio, ar gresia infarkatas ir pan. Apie koronarografijos procedūros atlikimą galite pasižiūrėti [čia:](/apie-koronarografija/)
-
-<video class="wp-video-shortcode" id="video-3625-2" width="992" height="558" preload="metadata" controls="controls"><source type="video/mp4" src="/wp-content/uploads/2024/06/Coronary-artery-anatomy-Coronary-angiogram.mp4.mp4?_=2"><a href="/wp-content/uploads/2024/06/Coronary-artery-anatomy-Coronary-angiogram.mp4.mp4">http://www.kardiologas.lt/wp-content/uploads/2024/06/Coronary-artery-anatomy-Coronary-angiogram.mp4.mp4</a></video>
 
 <iframe title="La coronarografia" width="992" height="744" src="https://www.youtube.com/embed/q0CSh_hQoBQ?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" id="yt-q0CSh_hQoBQ" loading="lazy"></iframe>
 

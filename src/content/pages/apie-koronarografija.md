@@ -7,7 +7,7 @@ excerpt: 'Dėmesio, tai informacinio pobūdžio informacija apie tyrimą. Pas mu
 categories: ['informacija-pacientui']
 entries: []
 source: 'https://web.archive.org/web/20220809083809id_/https://www.kardiologas.lt/apie-koronarografija/'
-wordpressId: 3625
+queryAliases: ['p=3625', 'page_id=3625']
 ---
 
 **Dėmesio, tai informacinio pobūdžio informacija apie tyrimą. Pas mus šis tyrimas neatliekamas, bet esant medicininei būtinybei (indikacijai), tai įvertinus konsultacijos metu, galime pasiųsti šį tyrimą atlikti .**Koronarografijos metu nustatoma ar susiaurėję širdį aprūpinančios kraujagyslęs, kokioje vietoje, kokio laipsnio, ar gresia infarkats ir pan. Apie koronarografijos procedūros atlikimą galite pasižiūrėti čia:

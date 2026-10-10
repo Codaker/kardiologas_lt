@@ -7,9 +7,10 @@ excerpt: 'Suteikia galimybę užsiregistruoti elektrokardiogramą pacientui pač
 categories: ['paslaugos-ir-tyrimai']
 entries: []
 source: 'https://web.archive.org/web/20250813010523id_/https://kardiologas.lt/asmeninis-elektrokardiografas/'
-wordpressId: 3552
+queryAliases: ['p=3552', 'page_id=3552']
+illustration:
+  src: '../../assets/images/equipment/personal-electrocardiograph.jpg'
+  alt: 'Asmeninis Elektrokardiografas'
 ---
-
-<img decoding="async" class="size-full wp-image-3553 alignright" src="/wp-content/uploads/2019/04/asmeninis-elektrokaardiografas.jpg" alt="Kardiologijos tyrimo įranga" width="150" height="86" loading="lazy">
 
 Suteikia galimybę užsiregistruoti elektrokardiogramą pacientui pačiam sau neritmiško plakimo metu. Pacientas apmokomas, kaip padaryti elektrokardiogramos įrašą. Vėliau įrašą peržiūri gydytojas, nustato diagnozę, gali paskirti patį optimaliausią gydymą.

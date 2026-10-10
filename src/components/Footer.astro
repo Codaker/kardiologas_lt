@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
 import { getEntry, render } from 'astro:content';
 import { withBase } from '../lib/urls';
 const entry = (await getEntry('settings', 'site'))!;
@@ -9,21 +11,21 @@ const { Content } = await render(entry);
 <footer class="site-footer">
   <div class="container contact-strip">
     <a href={`tel:${site.phoneHref}`}>
-      <i class="cs-font clever-icon-phone-2" aria-hidden="true"></i>
+      <Icon name="phone" />
       <div>
         <span>Registracija telefonu (12 val – 14 val)</span>
         <strong>{site.phone}</strong>
       </div>
     </a>
     <a href={`mailto:${site.email}`}>
-      <i class="cs-font clever-icon-mail-4" aria-hidden="true"></i>
+      <Icon name="mail" />
       <div>
         <span>Parašykite mums</span>
         <strong>{site.email.replace('@', '[@]')}</strong>
       </div>
     </a>
     <a href={withBase('/kardiologas-kontaktai/')}>
-      <i class="cs-font clever-icon-place-localizer" aria-hidden="true"></i>
+      <Icon name="location" />
       <div>
         <span>Mus Rasite</span>
         <strong>{site.address}</strong>
@@ -32,11 +34,11 @@ const { Content } = await render(entry);
   </div>
   <div class="container footer-grid">
     <div>
-      <img
+      <Image
         class="footer-logo"
-        src={withBase(site.footerLogo)}
-        width="154"
-        height="70"
+        src={site.footerLogo}
+        width={154}
+        densities={[1, 2]}
         alt="Pulsas"
         loading="lazy"
       />
@@ -67,15 +69,15 @@ const { Content } = await render(entry);
       <h2>Kontaktai</h2>
       <address>
         <p>
-          <i class="cs-font clever-icon-place-localizer" aria-hidden="true"></i>
+          <Icon name="location" />
           {site.address}, Lietuva
         </p>
         <p>
-          <i class="cs-font clever-icon-mail-4" aria-hidden="true"></i>
+          <Icon name="mail" />
           <a href={`mailto:${site.email}`}>{site.email.replace('@', '[@]')}</a>
         </p>
         <p>
-          <i class="cs-font clever-icon-phone-2" aria-hidden="true"></i>
+          <Icon name="phone" />
           <a href={`tel:${site.phoneHref}`}>
             {site.phone}
             <small>nuo 12 val. iki 14 val.</small>

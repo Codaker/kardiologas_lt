@@ -7,9 +7,10 @@ excerpt: 'Specialiu medicininiu dviračiu, stebint elektrokardiogramą, pulsą, 
 categories: ['paslaugos-ir-tyrimai']
 entries: []
 source: 'https://web.archive.org/web/20250813010024id_/https://kardiologas.lt/veloergometrija/'
-wordpressId: 3536
+queryAliases: ['p=3536', 'page_id=3536']
+illustration:
+  src: '../../assets/images/equipment/ergometer.jpg'
+  alt: 'Veloergometrija'
 ---
-
-<img fetchpriority="high" decoding="async" class="size-full wp-image-3537 alignright" src="/wp-content/uploads/2019/04/veloergometras.jpg" alt="Kardiologijos tyrimo įranga" width="177" height="284" loading="lazy">
 
 Specialiu medicininiu dviračiu, stebint elektrokardiogramą, pulsą, kraujo spaudimą, duodamas tiksliai dozuotas standartizuotas krūvis širdžiai, kuris palaipsniui didinamas. Tada įvertinamas širdies pajėgumas, ar krūvio metu neatsiranda deguonies  trūkumas širdžiai (išemija), jos rezervai tiek sveikiems tiek ir ligoniams. [Kaip tai atliekama, galite pamatyti čia:](https://www.youtube.com/watch?v=Ht0hvCTTZjM)
