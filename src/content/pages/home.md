@@ -7,10 +7,9 @@ excerpt: ''
 categories: []
 entries:
   [
-    '/3781-2/',
+    '/apie-sirdies-stimuliatoriu/',
     '/kaip-pasiruosti-pries-konsultacija/',
     '/apie-koronarografija-vainikiniu-arteriju-angiografija-sirdies-kraujagysliu-zondavimas/',
   ]
 source: 'https://web.archive.org/web/20250810004903/https://kardiologas.lt/'
-queryAliases: ['p=3087', 'page_id=3087']
 ---

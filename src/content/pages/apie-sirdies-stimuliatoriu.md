@@ -1,20 +1,19 @@
 ---
 title: 'Apie širdies stimuliatorių'
-path: '/3781-2/'
+path: '/apie-sirdies-stimuliatoriu/'
 type: 'article'
 description: 'Stimuliatoriaus prireikia tada, kai: būna per retas ritmas kartojasi dažno-reto ritmo epizodai ir negalima skirti vaistų retinančių ritmą, nes gali per daug suretinti kai būna širdies labai ryškus nepakankamuma'
 excerpt: 'Stimuliatoriaus prireikia tada, kai: būna per retas ritmas kartojasi dažno-reto ritmo epizodai ir negalima skirti vaistų retinančių ritmą, nes gali per daug suretinti kai būna širdies labai ryškus nepakankamuma'
 categories: ['informacija-pacientui']
 entries: []
 source: 'https://web.archive.org/web/20250813004122id_/https://kardiologas.lt/3781-2/'
-queryAliases: ['p=3781', 'page_id=3781']
 ---
 
 Stimuliatoriaus prireikia tada, kai:
 
 - būna per retas ritmas
 - kartojasi dažno-reto ritmo epizodai ir negalima skirti vaistų retinančių ritmą, nes gali per daug suretinti
-- kai būna širdies labai ryškus  nepakankamumas ir medikamentai nepadeda (tik kai kuriems ligoniams)
+- kai būna širdies labai ryškus nepakankamumas ir medikamentai nepadeda (tik kai kuriems ligoniams)
 - kai būna įvairios širdies blokados
 
 **[Galite pažiūrėti animaciją, kaip tai atliekama](https://www.youtube.com/watch?v=WgKCUjPcDY0)**

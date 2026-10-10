@@ -7,7 +7,6 @@ excerpt: ''
 categories: []
 entries: []
 source: 'https://web.archive.org/web/20251114204307id_/https://kardiologas.lt/kardiologas-kontaktai/'
-queryAliases: ['p=1873', 'page_id=1873']
 ---
 
 <section class="contact-booking" aria-labelledby="registracija">

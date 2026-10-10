@@ -7,7 +7,6 @@ excerpt: 'Kas yra širdies kraujagyslės stentavimas? Stentavimas – tai proced
 categories: ['informacija-pacientui']
 entries: []
 source: 'https://web.archive.org/web/20250810001320id_/https://kardiologas.lt/stento-implantavimas/'
-queryAliases: ['p=3621', 'page_id=3621']
 ---
 
 ### **Kas yra širdies kraujagyslės stentavimas?**

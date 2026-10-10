@@ -7,7 +7,6 @@ excerpt: 'Informacija paremta mano ilgamete patirtimi bendradarbiaujant su DI Ko
 categories: ['informacija-pacientui']
 entries: []
 source: 'https://web.archive.org/web/20250813013944id_/https://kardiologas.lt/apie-koronarografija-vainikiniu-arteriju-angiografija-sirdies-kraujagysliu-zondavimas/'
-queryAliases: ['p=3625', 'page_id=3625']
 ---
 
 **Informacija paremta mano ilgamete patirtimi bendradarbiaujant su DI**

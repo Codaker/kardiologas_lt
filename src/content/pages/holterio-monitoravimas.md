@@ -7,7 +7,6 @@ excerpt: 'Šio tyrimo metu pacientui ant krūtinės pritvirtinami 4 lipdukai-ele
 categories: ['paslaugos-ir-tyrimai']
 entries: []
 source: 'https://web.archive.org/web/20250813012741id_/https://kardiologas.lt/holterio-monitoravimas/'
-queryAliases: ['p=3546', 'page_id=3546']
 illustration:
   src: '../../assets/images/equipment/holter-monitor.jpg'
   alt: 'Holterio Monitoravimas'

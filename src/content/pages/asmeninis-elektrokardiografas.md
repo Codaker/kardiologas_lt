@@ -7,7 +7,6 @@ excerpt: 'Suteikia galimybę užsiregistruoti elektrokardiogramą pacientui pač
 categories: ['paslaugos-ir-tyrimai']
 entries: []
 source: 'https://web.archive.org/web/20250813010523id_/https://kardiologas.lt/asmeninis-elektrokardiografas/'
-queryAliases: ['p=3552', 'page_id=3552']
 illustration:
   src: '../../assets/images/equipment/personal-electrocardiograph.jpg'
   alt: 'Asmeninis Elektrokardiografas'

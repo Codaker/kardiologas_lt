@@ -7,7 +7,6 @@ excerpt: 'Specialiu medicininiu dviračiu, stebint elektrokardiogramą, pulsą, 
 categories: ['paslaugos-ir-tyrimai']
 entries: []
 source: 'https://web.archive.org/web/20250813010024id_/https://kardiologas.lt/veloergometrija/'
-queryAliases: ['p=3536', 'page_id=3536']
 illustration:
   src: '../../assets/images/equipment/ergometer.jpg'
   alt: 'Veloergometrija'

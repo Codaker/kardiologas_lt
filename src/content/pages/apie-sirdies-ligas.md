@@ -1,13 +1,12 @@
 ---
 title: 'Apie širdies ligas'
-path: '/3792-2/'
+path: '/apie-sirdies-ligas/'
 type: 'article'
 description: 'Apie širdies ligas Čia pateiksime aprašymus apie pagrindines širdies ligas, remdamiesi ilgalaike asmenine ir kitų medikų patirtimi. Hipertenzija (arba padidėjusio kraujospūdžio liga) Padidėjusio kraujo spaudimo'
 excerpt: 'Apie širdies ligas Čia pateiksime aprašymus apie pagrindines širdies ligas, remdamiesi ilgalaike asmenine ir kitų medikų patirtimi. Hipertenzija (arba padidėjusio kraujospūdžio liga) Padidėjusio kraujo spaudimo'
 categories: ['uncategorized']
 entries: []
 source: 'https://web.archive.org/web/20250813010702id_/https://kardiologas.lt/3792-2/'
-queryAliases: ['p=3792', 'page_id=3792']
 ---
 
 ## Apie širdies ligas

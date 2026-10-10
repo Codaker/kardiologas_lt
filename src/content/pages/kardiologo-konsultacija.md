@@ -7,7 +7,6 @@ excerpt: 'Konsultuojame ligonius, sergančius širdies ligomis: Padidėjusio kra
 categories: ['paslaugos-ir-tyrimai']
 entries: []
 source: 'https://web.archive.org/web/20250812235044id_/https://kardiologas.lt/kardiologo-konsultacija/'
-queryAliases: ['p=1', 'page_id=1']
 ---
 
 #### Konsultuojame ligonius, sergančius širdies ligomis:

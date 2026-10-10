@@ -7,7 +7,6 @@ excerpt: 'Pacientui uždedamas kraujo spaudimo matuoklis (monitorius), ant ant j
 categories: ['paslaugos-ir-tyrimai']
 entries: []
 source: 'https://web.archive.org/web/20250813001328id_/https://kardiologas.lt/kraujo-spaudimas/'
-queryAliases: ['p=3549', 'page_id=3549']
 illustration:
   src: '../../assets/images/equipment/blood-pressure-monitor.jpg'
   alt: 'Kraujo spaudimo matavimas parą laiko'

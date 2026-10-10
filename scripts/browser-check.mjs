@@ -110,7 +110,7 @@ try {
   assert(await page.locator('.video-dialog').evaluate((e) => e.open));
   await page.keyboard.press('Escape');
   assert(!(await page.locator('.video-dialog').evaluate((e) => e.open)));
-  assert.equal(await page.locator('.video-container iframe').count(), 0);
+  await page.locator('.video-container iframe').waitFor({ state: 'detached' });
   await page.locator('.submenu-toggle').first().focus();
   await page.keyboard.press('Enter');
   assert.equal(
@@ -187,15 +187,21 @@ try {
       `Mobile overflow: ${route.path}`,
     );
   }
-  await page.goto(base + '?s=Holterio');
-  await page.waitForURL('**/paieska/?s=Holterio');
-  await page.goto(base + '?p=3781');
-  await page.waitForURL('**/3781-2/');
-  const missing = await page.goto(base + 'puslapio-nera/');
-  assert.equal(missing.status(), 404);
-  assert(
-    await page.getByRole('heading', { name: 'Puslapis nerastas' }).isVisible(),
-  );
+  for (const path of [
+    '3781-2/',
+    '3792-2/',
+    'feed/',
+    'feed.xml',
+    'puslapio-nera/',
+  ]) {
+    const missing = await page.goto(base + path);
+    assert.equal(missing.status(), 404, path);
+    assert(
+      await page
+        .getByRole('heading', { name: 'Puslapis nerastas' })
+        .isVisible(),
+    );
+  }
   const reduced = await browser.newContext({
     reducedMotion: 'reduce',
     viewport: { width: 390, height: 844 },

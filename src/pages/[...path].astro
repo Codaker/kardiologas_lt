@@ -48,7 +48,7 @@ const listed = await Promise.all(
     .map(async (e) => ({ ...e, ...(await render(e)) })),
 );
 const homeArticles = [
-  '/3781-2/',
+  '/apie-sirdies-stimuliatoriu/',
   '/kaip-pasiruosti-pries-konsultacija/',
   '/apie-koronarografija-vainikiniu-arteriju-angiografija-sirdies-kraujagysliu-zondavimas/',
 ].map((path) => pages.find((p) => p.data.path === path)!);
@@ -194,7 +194,7 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
             <h2>Naujausi įrašai</h2>
             <ul>
               {[
-                '/3792-2/',
+                '/apie-sirdies-ligas/',
                 ...homeArticles.map((p) => p.data.path),
                 '/stento-implantavimas/',
               ].map((path) => {

@@ -14,7 +14,6 @@ const pages = defineCollection({
       categories: z.array(z.string()).default([]),
       entries: z.array(z.string()).default([]),
       source: z.url(),
-      queryAliases: z.array(z.string()).default([]),
       illustration: z
         .object({ src: image(), alt: z.string().min(1) })
         .optional(),

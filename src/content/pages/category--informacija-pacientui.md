@@ -7,7 +7,7 @@ excerpt: ''
 categories: []
 entries:
   [
-    '/3781-2/',
+    '/apie-sirdies-stimuliatoriu/',
     '/kaip-pasiruosti-pries-konsultacija/',
     '/apie-koronarografija-vainikiniu-arteriju-angiografija-sirdies-kraujagysliu-zondavimas/',
     '/stento-implantavimas/',

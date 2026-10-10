@@ -5,6 +5,7 @@ import { load } from 'cheerio';
 import assert from 'node:assert/strict';
 const base = (process.env.BASE_PATH || '/kardiologas_lt').replace(/\/$/, '');
 const site = new URL(process.env.SITE_URL || 'https://codaker.github.io');
+const indexableSite = site.origin === 'https://kardiologas.lt';
 const routes = JSON.parse(await readFile('docs/route-manifest.json', 'utf8'));
 const failures = [];
 let links = 0,
@@ -15,6 +16,34 @@ for (const route of routes) {
     existsSync(resolve('dist', '.' + route.path, 'index.html')),
     `Missing route ${route.path}`,
   );
+}
+const sitemapPages = [];
+if (indexableSite) {
+  const sitemapIndex = load(await readFile('dist/sitemap-index.xml', 'utf8'), {
+    xml: true,
+  });
+  const sitemapFiles = sitemapIndex('sitemap > loc').toArray();
+  assert(sitemapFiles.length > 0, 'Sitemap index contains no sitemaps');
+  for (const entry of sitemapFiles) {
+    const url = new URL(sitemapIndex(entry).text());
+    assert.equal(url.origin, site.origin, 'Incorrect sitemap origin');
+    assert(url.pathname.startsWith(base + '/'), 'Incorrect sitemap base path');
+    const file = resolve('dist', '.' + url.pathname.slice(base.length));
+    const sitemap = load(await readFile(file, 'utf8'), { xml: true });
+    sitemapPages.push(
+      ...sitemap('url > loc')
+        .toArray()
+        .map((entry) => sitemap(entry).text()),
+    );
+  }
+  assert.deepEqual(
+    sitemapPages.sort(),
+    routes.map((route) => new URL(base + route.path, site).href).sort(),
+    'Sitemap must contain exactly the published content routes',
+  );
+}
+for (const path of ['feed', 'feed.xml', 'sitemap.xml']) {
+  assert(!existsSync(resolve('dist', path)), `Obsolete output: ${path}`);
 }
 async function files(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -27,6 +56,11 @@ async function files(dir) {
   ).flat();
 }
 const outputFiles = await files('dist');
+if (!indexableSite)
+  assert(
+    !outputFiles.some((file) => /\/sitemap[^/]*\.xml$/.test(file)),
+    'Non-production builds must not publish a sitemap',
+  );
 const obsoleteResources =
   /wp-content|wp-includes|wordpress|cleversoft|clever-icon|wp-image-|wp-video|zootemplate/i;
 for (const file of outputFiles) {
@@ -46,6 +80,20 @@ for (const file of outputFiles.filter((f) => f.endsWith('.html'))) {
     failures.push(`${file}: missing language`);
   if ($('h1').length !== 1)
     failures.push(`${file}: expected one h1, found ${$('h1').length}`);
+  const sitemapLink = $('link[rel="sitemap"]');
+  if (indexableSite) {
+    if (sitemapLink.attr('href') !== base + '/sitemap-index.xml')
+      failures.push(`${file}: missing or incorrectly based sitemap link`);
+  } else if (sitemapLink.length) {
+    failures.push(`${file}: non-production page advertises a sitemap`);
+  }
+  const noindexPage = ['dist/404.html', 'dist/paieska/index.html'].includes(
+    file,
+  );
+  const expectedRobots =
+    indexableSite && !noindexPage ? 'index,follow' : 'noindex,follow';
+  if ($('meta[name="robots"]').attr('content') !== expectedRobots)
+    failures.push(`${file}: expected robots directive ${expectedRobots}`);
   for (const element of $('a[href]').toArray()) {
     const el = $(element);
     const href = el.attr('href');
@@ -67,7 +115,7 @@ for (const file of outputFiles.filter((f) => f.endsWith('.html'))) {
     }
   }
   for (const element of $(
-    'a[href],img[src],script[src],link[rel="stylesheet"],link[rel="icon"],source[src]',
+    'a[href],img[src],script[src],link[rel="stylesheet"],link[rel="icon"],link[rel="sitemap"],source[src]',
   ).toArray()) {
     const el = $(element),
       url = el.attr('href') || el.attr('src');
@@ -131,5 +179,5 @@ for (const file of outputFiles.filter((f) => f.endsWith('.html'))) {
 }
 assert.equal(failures.length, 0, failures.join('\n'));
 console.log(
-  `Verified ${routes.length} preserved routes, ${links} local references, ${images} optimized images, ${externalLinks} external links opening in new tabs, metadata, GitHub Pages base paths and clean asset output.`,
+  `Verified ${routes.length} content routes, ${sitemapPages.length} sitemap entries, ${indexableSite ? 'production' : 'noindex'} indexing policy, ${links} local references, ${images} optimized images, ${externalLinks} external links opening in new tabs, metadata, base paths and clean asset output.`,
 );

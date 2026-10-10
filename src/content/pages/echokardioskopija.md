@@ -7,7 +7,6 @@ excerpt: 'Tyrimo metu ultragarso aparatu ištiriama širdies. vožtuvų būklė,
 categories: ['paslaugos-ir-tyrimai']
 entries: []
 source: 'https://web.archive.org/web/20250813010432id_/https://kardiologas.lt/echokardioskopija/'
-queryAliases: ['p=3533', 'page_id=3533']
 illustration:
   src: '../../assets/images/equipment/echocardiograph.jpg'
   alt: 'Echokardioskopija'
