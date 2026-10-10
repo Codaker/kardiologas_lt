@@ -1,0 +1,51 @@
+---
+import { withBase } from '../lib/urls';
+interface Props {
+  items: { title: string; path: string }[];
+}
+const { items } = Astro.props;
+---
+
+<nav class="breadcrumbs container" aria-label="Naršymo kelias">
+  <ol>
+    {items.map((item, index) => (
+      <li>
+        {index < items.length - 1 ? (
+          <a href={withBase(item.path)}>{item.title}</a>
+        ) : (
+          <span aria-current="page">{item.title}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .breadcrumbs {
+    padding-block: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  li + li::before {
+    content: '/';
+    margin-right: 10px;
+    color: #777;
+  }
+  a {
+    color: var(--blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

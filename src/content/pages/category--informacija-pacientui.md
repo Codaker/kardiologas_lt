@@ -1,8 +1,9 @@
 ---
-title: 'Informacija Pacientui'
+title: 'Širdies tyrimai ir procedūros'
+seoTitle: 'Širdies tyrimai ir procedūros: straipsniai'
 path: '/category/informacija-pacientui/'
 type: 'listing'
-description: 'Informacija Pacientui'
+description: 'Straipsniai apie širdies stimuliatorius, koronarografiją, stentavimą ir širdies kompiuterinę tomografiją. Pasiruošimo konsultacijai informacija pacientams.'
 excerpt: ''
 categories: []
 entries:

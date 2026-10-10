@@ -3,6 +3,7 @@ import { unified } from '@astrojs/markdown-remark';
 import sitemap from '@astrojs/sitemap';
 import rehypeRaw from 'rehype-raw';
 import { localLinks } from './src/lib/local-links.mjs';
+import { canonicalPath } from './src/lib/seo.mjs';
 
 // Set SITE_URL=https://kardiologas.lt and BASE_PATH=/ for the original domain.
 const base = process.env.BASE_PATH || '/kardiologas_lt';
@@ -23,7 +24,12 @@ export default defineConfig({
   integrations: indexableSite
     ? [
         sitemap({
-          filter: (page) => !new URL(page).pathname.endsWith('/paieska/'),
+          filter: (page) => {
+            const path = new URL(page).pathname.slice(
+              base.replace(/\/$/, '').length,
+            );
+            return path !== '/paieska/' && canonicalPath(path) === path;
+          },
         }),
       ]
     : [],

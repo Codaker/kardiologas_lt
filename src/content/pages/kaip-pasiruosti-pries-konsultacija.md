@@ -1,15 +1,22 @@
 ---
-title: 'Kaip pasiruošti prieš konsultaciją'
+title: 'Kaip pasiruošti kardiologo konsultacijai'
+seoTitle: 'Kaip pasiruošti kardiologo konsultacijai?'
 path: '/kaip-pasiruosti-pries-konsultacija/'
 type: 'article'
-description: 'Kaip pacientui (-ei) pasiruošti tiesioginei konsultacijai (atvykstant į kabinetą) Prieš konsultaciją reikia 3 kartus per dieną matuotis spaudimą ir pulsą, užsirašyti, po to tuos duomenis atsinešti vizito metu S'
-excerpt: 'Kaip pacientui (-ei) pasiruošti tiesioginei konsultacijai (atvykstant į kabinetą) Prieš konsultaciją reikia 3 kartus per dieną matuotis spaudimą ir pulsą, užsirašyti, po to tuos duomenis atsinešti vizito metu S'
+description: 'Ką atsinešti į kardiologo konsultaciją: tyrimų atsakymus, vaistų sąrašą ir kraujospūdžio užrašus. Pasiruošimas vizitui ir nuotolinei konsultacijai.'
+excerpt: 'Ką atsinešti į kardiologo konsultaciją: tyrimų atsakymus, vaistų sąrašą ir kraujospūdžio užrašus. Pasiruošimas vizitui ir nuotolinei konsultacijai.'
 categories: ['informacija-pacientui', 'paslaugos-ir-tyrimai']
 entries: []
+related:
+  [
+    '/kardiologo-konsultacija/',
+    '/paslaugos-ir-tyrimai/',
+    '/kardiologas-kontaktai/',
+  ]
 source: 'https://web.archive.org/web/20250813013755id_/https://kardiologas.lt/kaip-pasiruosti-pries-konsultacija/'
 ---
 
-### **Kaip pacientui (-ei) pasiruošti tiesioginei konsultacijai (atvykstant į kabinetą)**
+## Kaip pacientui (-ei) pasiruošti tiesioginei konsultacijai (atvykstant į kabinetą)
 
 - Prieš konsultaciją reikia 3 kartus per dieną matuotis spaudimą ir pulsą, užsirašyti, po to tuos duomenis atsinešti vizito metu
 - Surinkti anksčiau atliktų kraujo ir kitų tyrimų duomenis, elektrokardiogramas, kitus visus medicininius dokumentus, kuriuos turite namie; jei neturite, gal yra galimybė pasiimti iš šeimos gydytojo ar atsispausdinti iš e-sveikatos
@@ -20,7 +27,7 @@ source: 'https://web.archive.org/web/20250813013755id_/https://kardiologas.lt/ka
 - Visus duomenis atsinešti į vizitą
 - Atsinešti asmens dokumentą
 
-### **Kaip pacientui (-ei) pasiruošti nuotolinei konsultacijai**
+## Kaip pacientui (-ei) pasiruošti nuotolinei konsultacijai
 
 Pirmiausiai el. paštu: kardiologas@gmail.com  atsiųskite el. laišką, kuriame trumpai, konkrečiai, išvardinkite pagrindines priežastis, kodėl norėtumėte konsultacijos, atsiųskite savo asmens kodą, kad gydytojas galėtų pasižiūrėti e-svaikatos sistemoje, kokios ligos buvo diagnozuotos, koks gydymas paskirtas
 

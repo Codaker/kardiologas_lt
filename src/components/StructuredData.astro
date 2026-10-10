@@ -1,0 +1,129 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../lib/urls';
+interface Props {
+  site: CollectionEntry<'settings'>['data'];
+  title: string;
+  description: string;
+  canonical: URL;
+  pageType: string;
+  image: string;
+  breadcrumbs: { title: string; path: string }[];
+}
+const { site, title, description, canonical, pageType, image, breadcrumbs } =
+  Astro.props;
+const absolute = (path: string) => new URL(withBase(path), Astro.site).href;
+const home = absolute('/');
+const clinicId = home + '#klinika';
+const websiteId = home + '#svetaine';
+const doctorId = absolute('/apie-mus/') + '#gydytojas';
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+const schemaTypes: Record<string, string> = {
+  about: 'AboutPage',
+  contact: 'ContactPage',
+  article: 'MedicalWebPage',
+  listing: 'CollectionPage',
+};
+const schemaType = schemaTypes[pageType] || 'WebPage';
+const graph = [
+  {
+    '@type': 'MedicalClinic',
+    '@id': clinicId,
+    name: site.title,
+    url: home,
+    telephone: site.phoneHref,
+    email: site.email,
+    description: site.description,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: site.streetAddress,
+      addressLocality: site.city,
+      addressCountry: 'LT',
+    },
+    logo: new URL(site.logo.src, Astro.site).href,
+    image,
+    hasMap: site.map,
+    medicalSpecialty: 'https://schema.org/Cardiovascular',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: days,
+        opens: site.opens,
+        closes: site.closes,
+      },
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: site.phoneHref,
+      contactType: 'Registracija konsultacijai',
+      availableLanguage: 'lt',
+      hoursAvailable: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: days,
+        opens: site.registrationOpens,
+        closes: site.registrationCloses,
+      },
+    },
+  },
+  {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    name: 'Pulsas',
+    alternateName: site.title,
+    url: home,
+    inLanguage: 'lt-LT',
+    publisher: { '@id': clinicId },
+  },
+  {
+    '@type': schemaType,
+    '@id': canonical.href + '#puslapis',
+    url: canonical.href,
+    name: title,
+    description,
+    inLanguage: 'lt-LT',
+    isPartOf: { '@id': websiteId },
+    publisher: { '@id': clinicId },
+    ...(breadcrumbs.length > 1
+      ? { breadcrumb: { '@id': canonical.href + '#narsymo-kelias' } }
+      : {}),
+    ...(['home', 'contact'].includes(pageType)
+      ? { mainEntity: { '@id': clinicId } }
+      : {}),
+    ...(pageType === 'about' ? { mainEntity: { '@id': doctorId } } : {}),
+  },
+  ...(pageType === 'about'
+    ? [
+        {
+          '@type': 'Person',
+          '@id': doctorId,
+          name: site.doctorName,
+          jobTitle: 'Gydytojas kardiologas',
+          worksFor: { '@id': clinicId },
+          url: absolute('/apie-mus/'),
+        },
+      ]
+    : []),
+  ...(breadcrumbs.length > 1
+    ? [
+        {
+          '@type': 'BreadcrumbList',
+          '@id': canonical.href + '#narsymo-kelias',
+          itemListElement: breadcrumbs.map((item, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: item.title,
+            item: absolute(item.path),
+          })),
+        },
+      ]
+    : []),
+];
+---
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': graph,
+  }).replaceAll('<', '\u003c')}
+/>

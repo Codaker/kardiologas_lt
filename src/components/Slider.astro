@@ -8,6 +8,14 @@ const slides = await Promise.all(
     .map(async (s) => ({ ...s, ...(await render(s)) })),
 );
 const site = (await getEntry('settings', 'site'))!.data;
+function animatedWords(title: string) {
+  let index = 0;
+  return title.split(' ').map((word) => {
+    const letters = [...word].map((letter) => ({ letter, index: index++ }));
+    index++;
+    return letters;
+  });
+}
 ---
 
 <section
@@ -36,14 +44,17 @@ const site = (await getEntry('settings', 'site'))!.data;
             <div class="slide-copy">
               {i === 0 ? (
                 <h1 aria-label={slide.data.title}>
-                  {[...slide.data.title].map((letter, index) => (
-                    <span
-                      class="letter"
-                      style={`--i:${index}`}
-                      aria-hidden="true"
-                    >
-                      {letter === ' ' ? '\u00a0' : letter}
-                    </span>
+                  {animatedWords(slide.data.title).map((word, wordIndex) => (
+                    <>
+                      {wordIndex > 0 && ' '}
+                      <span class="title-word" aria-hidden="true">
+                        {word.map(({ letter, index }) => (
+                          <span class="letter" style={`--i:${index}`}>
+                            {letter}
+                          </span>
+                        ))}
+                      </span>
+                    </>
                   ))}
                 </h1>
               ) : (

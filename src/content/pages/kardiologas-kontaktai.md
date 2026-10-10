@@ -1,8 +1,9 @@
 ---
-title: 'Kontaktai'
+title: 'Kontaktai ir registracija'
+seoTitle: 'Kontaktai ir registracija pas kardiologą Kaune'
 path: '/kardiologas-kontaktai/'
 type: 'contact'
-description: 'Nurodyti kontaktiniai duomenys, telefono numeris, kuriuo galima registruotis kardiologo konsultacijai'
+description: 'Kabinetas „Pulsas“: Sodų g. 56, Kaunas, tel. +370 37 392777. Registracija darbo dienomis 12–14 val. telefonu arba internetu. Adresas ir žemėlapis.'
 excerpt: ''
 categories: []
 entries: []

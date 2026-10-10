@@ -6,7 +6,7 @@ const { path } = Astro.props;
 ---
 
 <aside class="sidebar">
-  <h2>Tyrimai ir Paslaugos</h2>
+  <h2>Tyrimai ir paslaugos</h2>
   <ul>
     {site.services.map((s) => (
       <li>
@@ -23,16 +23,18 @@ const { path } = Astro.props;
     <h2>Darbo laikas</h2>
     <dl>
       <div>
-        <dt>Pirmadienis – Penktadienis:</dt>
-        <dd>11.00–19.00</dd>
+        <dt>Pirmadieniais–penktadieniais:</dt>
+        <dd>
+          {site.opens}–{site.closes}
+        </dd>
       </div>
       <div>
         <dt>Šeštadienis:</dt>
-        <dd>Nedirbam</dd>
+        <dd>Nedirbame</dd>
       </div>
       <div>
         <dt>Sekmadienis:</dt>
-        <dd>Nedirbam</dd>
+        <dd>Nedirbame</dd>
       </div>
     </dl>
   </div>

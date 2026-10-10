@@ -1,8 +1,9 @@
 ---
-title: 'Paslaugos Ir Tyrimai'
+title: 'Kardiologijos paslaugų apžvalga'
+seoTitle: 'Kardiologijos paslaugų apžvalga Kaune'
 path: '/category/paslaugos-ir-tyrimai/'
 type: 'listing'
-description: 'Paslaugos Ir Tyrimai'
+description: 'Kabineto „Pulsas“ paslaugų apžvalga: kardiologo konsultacijos, širdies tyrimai ir informacija apie pasiruošimą vizitui Kaune.'
 excerpt: ''
 categories: []
 entries:

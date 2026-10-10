@@ -1,21 +1,27 @@
 ---
-title: 'Apie Stento Implantavimą'
+title: 'Širdies kraujagyslių stentavimas'
+seoTitle: 'Širdies kraujagyslių stentavimas: ką žinoti?'
 path: '/stento-implantavimas/'
 type: 'article'
-description: 'Rodomas filmukas apie stento implantavimą į širdies kraujagyslės vidų'
-excerpt: 'Kas yra širdies kraujagyslės stentavimas? Stentavimas – tai procedūra, kurios metu į susiaurėjusią arba užsikimšusią širdies kraujagyslę (vainikinę arteriją) įvedamas stentas – plonas metalinis tinklelis, kuris'
+description: 'Kas yra stentas, kada atliekamas stentavimas ir ką aptarti su gydytoju po procedūros? Informacija pacientams. Kabinete „Pulsas“ stentavimas neatliekamas.'
+excerpt: 'Kas yra stentas, kada atliekamas stentavimas ir ką aptarti su gydytoju po procedūros? Informacija pacientams. Kabinete „Pulsas“ stentavimas neatliekamas.'
 categories: ['informacija-pacientui']
 entries: []
+related:
+  [
+    '/apie-koronarografija-vainikiniu-arteriju-angiografija-sirdies-kraujagysliu-zondavimas/',
+    '/kardiologo-konsultacija/',
+  ]
 source: 'https://web.archive.org/web/20250810001320id_/https://kardiologas.lt/stento-implantavimas/'
 ---
 
-### **Kas yra širdies kraujagyslės stentavimas?**
+## Kas yra širdies kraujagyslės stentavimas?
 
 Stentavimas – tai procedūra, kurios metu į susiaurėjusią arba užsikimšusią širdies kraujagyslę (vainikinę arteriją) įvedamas **stentas** – plonas metalinis tinklelis, kuris išplečia kraujagyslę ir palaiko ją atvirą. Tai pagerina kraujotaką į širdies raumenį ir padeda išvengti infarkto.
 
 ---
 
-### 🩺 **Kada atliekamas stentavimas?**
+## Kada atliekamas stentavimas?
 
 Stentavimas dažniausiai atliekamas šiais atvejais:
 
@@ -27,9 +33,9 @@ Stentavimas dažniausiai atliekamas šiais atvejais:
 
 ---
 
-### 📈 **Gydymo rezultatai: ką tikėtis po stentavimo?**
+## Gydymo rezultatai: ką tikėtis po stentavimo?
 
-#### **Artimas laikotarpis (pirmi mėnesiai):**
+### Artimas laikotarpis (pirmi mėnesiai):
 
 - Dažniausiai pacientas **jaučia greitą pagerėjimą** – sumažėja ar visai išnyksta krūtinės skausmai, dusulys.
 
@@ -37,7 +43,7 @@ Stentavimas dažniausiai atliekamas šiais atvejais:
 
 - Svarbiausia – sumažėja **rizika antram infarktui**.
 
-#### **Atokesnis laikotarpis (po metų ir daugiau):**
+### Atokesnis laikotarpis (po metų ir daugiau):
 
 - Ilgalaikiai rezultatai geri, **jeigu pacientas laikosi gydymo plano**.
 
@@ -47,9 +53,9 @@ Stentavimas dažniausiai atliekamas šiais atvejais:
 
 ---
 
-### 💊 **Kaip elgtis po stentavimo?**
+## Kaip elgtis po stentavimo?
 
-#### **1\. Vaistai:**
+### 1\. Vaistai:
 
 Po stentavimo pacientas privalo vartoti šiuos vaistus:
 
@@ -67,7 +73,7 @@ Po stentavimo pacientas privalo vartoti šiuos vaistus:
 
 - **Forxiga arba Jardiance (jei yra širdies nusilpimas)**
 
-#### **2\. Gyvensena:**
+### 2\. Gyvensena:
 
 - **Rūkymas – visiškai nutraukti.**
 
@@ -81,10 +87,10 @@ Po stentavimo pacientas privalo vartoti šiuos vaistus:
 
 ---
 
-### 🚨
+## Svarbi informacija
 
 **Dėmesio, tai informacinio pobūdžio informacija apie tyrimą. Pas mus šis gydymo būdas  neatliekamas, bet esant medicininei būtinybei (indikacijai), tai įvertinus konsultacijos metu, galime pasiųsti šį gydymo būdą  atlikti. Pastaba – ar reikia atlikti stentavimą, nusprendžiama  tik prieš tai atlikus koronarografiją.**
 
 Apie stento implantavimą į širdį maitinančią arteriją galite pasižiūrėti čia:
 
-<iframe title="What is a stent, and how does it work?" width="992" height="744" src="https://www.youtube.com/embed/OG-5tQ7oNkQ?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" id="yt-OG-5tQ7oNkQ" loading="lazy"></iframe>
+<iframe title="Kas yra stentas ir kaip jis veikia" width="992" height="744" src="https://www.youtube.com/embed/OG-5tQ7oNkQ?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" id="yt-OG-5tQ7oNkQ" loading="lazy"></iframe>

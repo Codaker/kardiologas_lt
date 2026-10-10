@@ -419,6 +419,10 @@ button:disabled {
 .slide-copy .letter {
   display: inline-block;
 }
+.slide-copy .title-word {
+  display: inline-block;
+  white-space: nowrap;
+}
 .slide.is-active .letter {
   animation: letter-enter 1.5s both;
   animation-delay: calc(var(--i) * 0.1s);
@@ -561,6 +565,11 @@ button:disabled {
 }
 .feature p {
   margin: 0;
+}
+.feature a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .feature table {
   width: 100%;
@@ -881,6 +890,14 @@ button:disabled {
 .article-body {
   width: min(100%, 900px);
   padding: 0 25px;
+}
+.related-content {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.listing-intro {
+  margin-bottom: 32px;
 }
 .article-body h1 {
   margin-bottom: 40px;

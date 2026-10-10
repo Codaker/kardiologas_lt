@@ -13,7 +13,10 @@ const { Content } = await render(entry);
     <a href={`tel:${site.phoneHref}`}>
       <Icon name="phone" />
       <div>
-        <span>Registracija telefonu (12 val – 14 val)</span>
+        <span>
+          Registracija telefonu ({site.registrationOpens}–
+          {site.registrationCloses})
+        </span>
         <strong>{site.phone}</strong>
       </div>
     </a>
@@ -27,7 +30,7 @@ const { Content } = await render(entry);
     <a href={withBase('/kardiologas-kontaktai/')}>
       <Icon name="location" />
       <div>
-        <span>Mus Rasite</span>
+        <span>Mus rasite</span>
         <strong>{site.address}</strong>
       </div>
     </a>
@@ -58,7 +61,7 @@ const { Content } = await render(entry);
       <h2>Informacija</h2>
       <ul>
         <li>
-          <a href={withBase('/apie-mus/')}>Apie Mus</a>
+          <a href={withBase('/apie-mus/')}>Apie mus</a>
         </li>
         <li>
           <a href={withBase('/kardiologas-kontaktai/')}>Kontaktai</a>
@@ -80,16 +83,16 @@ const { Content } = await render(entry);
           <Icon name="phone" />
           <a href={`tel:${site.phoneHref}`}>
             {site.phone}
-            <small>nuo 12 val. iki 14 val.</small>
+            <small>
+              {site.registrationOpens}–{site.registrationCloses}
+            </small>
           </a>
         </p>
       </address>
     </div>
   </div>
   <div class="copyright">
-    <div class="container">
-      Copyright © 2025 kardiologas.lt. All rights reserved.
-    </div>
+    <div class="container">© 2025 kardiologas.lt. Visos teisės saugomos.</div>
   </div>
 </footer>
 <a class="back-top" href="#top" aria-label="Grįžti į viršų">

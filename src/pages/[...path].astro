@@ -12,6 +12,7 @@ import Sidebar from '../components/Sidebar.astro';
 import ContactForm from '../components/ContactForm.astro';
 import ContactDetails from '../components/ContactDetails.astro';
 import { withBase } from '../lib/urls';
+import { canonicalPath } from '../lib/seo.mjs';
 import Icon from '../components/Icon.astro';
 import ArticleImage from '../components/ArticleImage.astro';
 import { Image, getImage } from 'astro:assets';
@@ -41,12 +42,14 @@ const features = await Promise.all(
     .sort((a, b) => a.data.order - b.data.order)
     .map(async (e) => ({ ...e, ...(await render(e)) })),
 );
-const listed = await Promise.all(
-  page.data.entries
-    .map((path) => pages.find((e) => e.data.path === path))
-    .filter((e): e is CollectionEntry<'pages'> => !!e)
-    .map(async (e) => ({ ...e, ...(await render(e)) })),
-);
+const listed = page.data.entries
+  .map((path) => pages.find((e) => e.data.path === path))
+  .filter((e): e is CollectionEntry<'pages'> => !!e);
+const related = page.data.related.map((path) => {
+  const entry = pages.find((entry) => entry.data.path === path);
+  if (!entry) throw new Error(`Unknown related page: ${path}`);
+  return entry;
+});
 const homeArticles = [
   '/apie-sirdies-stimuliatoriu/',
   '/kaip-pasiruosti-pries-konsultacija/',
@@ -56,10 +59,21 @@ const patientListing =
   page.data.type === 'listing' &&
   page.data.path.startsWith('/informacija-pacient');
 const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
+const parent =
+  page.data.type === 'article'
+    ? site.services.some((service) => service.path === page.data.path)
+      ? { title: 'Paslaugos ir tyrimai', path: '/paslaugos-ir-tyrimai/' }
+      : { title: 'Informacija pacientams', path: '/informacija-pacientams/' }
+    : page.data.pageNumber > 1
+      ? { title: 'Informacija pacientams', path: canonicalPath(listingRoot) }
+      : undefined;
 ---
 
 <SiteLayout
   title={page.data.title}
+  seoTitle={page.data.seoTitle}
+  pageType={page.data.type}
+  parent={parent}
   description={page.data.description}
   path={page.data.path}
 >
@@ -93,12 +107,13 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
               <h3>
                 <a href={withBase(article.data.path)}>{article.data.title}</a>
               </h3>
-              <p>{article.data.excerpt.slice(0, 165)}…</p>
+              <p>{article.data.excerpt}</p>
               <a
                 class="button small read-more"
                 href={withBase(article.data.path)}
+                aria-label={`Skaityti daugiau: ${article.data.title}`}
               >
-                Skaityti Daugiau
+                Skaityti daugiau
               </a>
             </article>
           ))}
@@ -113,6 +128,23 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
         <h1>{page.data.title}</h1>
         <ArticleImage illustration={page.data.illustration} />
         <Content />
+        {related.length > 0 && (
+          <section
+            class="related-content"
+            aria-labelledby="susijusi-informacija"
+          >
+            <h2 id="susijusi-informacija">Susijusi informacija</h2>
+            <ul>
+              {related.map((entry) => (
+                <li>
+                  <a href={withBase(canonicalPath(entry.data.path))}>
+                    {entry.data.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </article>
     </div>
   )}
@@ -123,9 +155,6 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
         style={`background-image: url("${pageBackground!.src}")`}
       >
         <h1>{page.data.title}</h1>
-        <p>
-          <a href={withBase('/')}>Pradžia</a> / {page.data.title}
-        </p>
       </div>
       <section class="container about-layout">
         <article class="prose">
@@ -191,7 +220,7 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
       >
         {patientListing ? (
           <aside class="sidebar">
-            <h2>Naujausi įrašai</h2>
+            <h2>Naudinga pacientams</h2>
             <ul>
               {[
                 '/apie-sirdies-ligas/',
@@ -212,16 +241,16 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
             <ul>
               <li>
                 <a href={withBase('/category/informacija-pacientui/')}>
-                  Informacija Pacientui
+                  Informacija pacientams
                 </a>
               </li>
               <li>
-                <a href={withBase('/category/paslaugos-ir-tyrimai/')}>
-                  Paslaugos Ir Tyrimai
+                <a href={withBase('/paslaugos-ir-tyrimai/')}>
+                  Paslaugos ir tyrimai
                 </a>
               </li>
               <li>
-                <a href={withBase('/category/uncategorized/')}>Uncategorized</a>
+                <a href={withBase('/category/uncategorized/')}>Širdies ligos</a>
               </li>
             </ul>
           </aside>
@@ -229,37 +258,35 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
           <Sidebar path={page.data.path} />
         )}
         <div class="post-list">
+          <p class="listing-intro">{page.data.description}</p>
           {listed.map((entry) => (
             <article class="prose">
               <h2>
                 <a href={withBase(entry.data.path)}>{entry.data.title}</a>
               </h2>
-              {patientListing ? (
-                <>
-                  <ArticleImage illustration={entry.data.illustration} />
-                  <entry.Content />
-                </>
-              ) : (
-                <p>{entry.data.excerpt}…</p>
+              {patientListing && (
+                <ArticleImage illustration={entry.data.illustration} />
               )}
+              <p>{entry.data.excerpt}</p>
               <a
                 class="button small read-more"
                 href={withBase(entry.data.path)}
+                aria-label={`Skaityti daugiau: ${entry.data.title}`}
               >
-                Skaityti Daugiau
+                Skaityti daugiau
               </a>
             </article>
           ))}
           {patientListing && (
             <nav class="pagination" aria-label="Puslapiai">
               <a
-                href={withBase(listingRoot)}
+                href={withBase(canonicalPath(listingRoot))}
                 aria-current={page.data.pageNumber === 1 ? 'page' : undefined}
               >
                 1
               </a>
               <a
-                href={withBase(listingRoot + 'page/2/')}
+                href={withBase(canonicalPath(listingRoot + 'page/2/'))}
                 aria-current={page.data.pageNumber === 2 ? 'page' : undefined}
               >
                 2

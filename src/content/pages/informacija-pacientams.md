@@ -1,8 +1,9 @@
 ---
-title: 'Informacija Pacientui'
+title: 'Informacija pacientams'
+seoTitle: 'Informacija pacientams apie širdies sveikatą'
 path: '/informacija-pacientams/'
 type: 'listing'
-description: 'Pacientams pateikiama informacija apie širdies ligas ir kardiologinius tyrimus'
+description: 'Kaip pasiruošti kardiologo konsultacijai? Informacija apie širdies stimuliatorius ir koronarografiją. Kabineto „Pulsas“ straipsniai pacientams.'
 excerpt: ''
 categories: []
 entries:

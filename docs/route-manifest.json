@@ -1,61 +1,61 @@
 [
   {
     "path": "/",
-    "title": "Pradžia",
+    "title": "Kardiologas Kaune",
     "type": "home",
     "source": "https://web.archive.org/web/20250810004903/https://kardiologas.lt/"
   },
   {
     "path": "/kardiologo-konsultacija/",
-    "title": "Kardiologo Konsultacija",
+    "title": "Kardiologo konsultacija",
     "type": "article",
     "source": "https://web.archive.org/web/20250812235044id_/https://kardiologas.lt/kardiologo-konsultacija/"
   },
   {
     "path": "/category/paslaugos-ir-tyrimai/",
-    "title": "Paslaugos Ir Tyrimai",
+    "title": "Kardiologijos paslaugų apžvalga",
     "type": "listing",
     "source": "https://web.archive.org/web/20250810011730id_/https://kardiologas.lt/category/paslaugos-ir-tyrimai/"
   },
   {
     "path": "/veloergometrija/",
-    "title": "Veloergometrija",
+    "title": "Veloergometrija (fizinio krūvio tyrimas)",
     "type": "article",
     "source": "https://web.archive.org/web/20250813010024id_/https://kardiologas.lt/veloergometrija/"
   },
   {
     "path": "/echokardioskopija/",
-    "title": "Echokardioskopija",
+    "title": "Echokardioskopija (širdies echoskopija)",
     "type": "article",
     "source": "https://web.archive.org/web/20250813010432id_/https://kardiologas.lt/echokardioskopija/"
   },
   {
     "path": "/holterio-monitoravimas/",
-    "title": "Holterio Monitoravimas",
+    "title": "Holterio monitoravimas",
     "type": "article",
     "source": "https://web.archive.org/web/20250813012741id_/https://kardiologas.lt/holterio-monitoravimas/"
   },
   {
     "path": "/asmeninis-elektrokardiografas/",
-    "title": "Asmeninis Elektrokardiografas",
+    "title": "Asmeninis elektrokardiografas",
     "type": "article",
     "source": "https://web.archive.org/web/20250813010523id_/https://kardiologas.lt/asmeninis-elektrokardiografas/"
   },
   {
     "path": "/kraujo-spaudimas/",
-    "title": "Kraujo spaudimo matavimas parą laiko",
+    "title": "Kraujospūdžio stebėjimas visą parą",
     "type": "article",
     "source": "https://web.archive.org/web/20250813001328id_/https://kardiologas.lt/kraujo-spaudimas/"
   },
   {
     "path": "/informacija-pacientams/",
-    "title": "Informacija Pacientui",
+    "title": "Informacija pacientams",
     "type": "listing",
     "source": "https://web.archive.org/web/20250615153829id_/https://www.kardiologas.lt/informacija-pacientams/"
   },
   {
     "path": "/kaip-pasiruosti-pries-konsultacija/",
-    "title": "Kaip pasiruošti prieš konsultaciją",
+    "title": "Kaip pasiruošti kardiologo konsultacijai",
     "type": "article",
     "source": "https://web.archive.org/web/20250813013755id_/https://kardiologas.lt/kaip-pasiruosti-pries-konsultacija/"
   },
@@ -67,77 +67,80 @@
   },
   {
     "path": "/kardiologas-kontaktai/",
-    "title": "Kontaktai",
+    "title": "Kontaktai ir registracija",
     "type": "contact",
     "source": "https://web.archive.org/web/20251114204307id_/https://kardiologas.lt/kardiologas-kontaktai/"
   },
   {
     "path": "/apie-mus/",
-    "title": "Apie Mus",
+    "title": "Apie kabinetą „Pulsas“",
     "type": "about",
     "source": "https://web.archive.org/web/20250810004111id_/https://kardiologas.lt/apie-mus/"
   },
   {
     "path": "/apie-sirdies-ligas/",
-    "title": "Apie širdies ligas",
+    "title": "Širdies ligos ir padidėjęs kraujospūdis",
     "type": "article",
     "source": "https://web.archive.org/web/20250813010702id_/https://kardiologas.lt/3792-2/"
   },
   {
     "path": "/apie-koronarografija/",
-    "title": "Apie Koronarografiją:",
+    "title": "Koronarografijos eiga: vaizdo įrašas",
     "type": "article",
     "source": "https://web.archive.org/web/20220809083809id_/https://www.kardiologas.lt/apie-koronarografija/"
   },
   {
     "path": "/apie-koronarografija-vainikiniu-arteriju-angiografija-sirdies-kraujagysliu-zondavimas/",
-    "title": "Apie Koronarografiją:",
+    "title": "Koronarografija: ką reikia žinoti",
     "type": "article",
     "source": "https://web.archive.org/web/20250813013944id_/https://kardiologas.lt/apie-koronarografija-vainikiniu-arteriju-angiografija-sirdies-kraujagysliu-zondavimas/"
   },
   {
     "path": "/category/uncategorized/",
-    "title": "Uncategorized",
+    "title": "Straipsniai apie širdies ligas",
     "type": "listing",
     "source": "https://web.archive.org/web/20250812235311id_/https://kardiologas.lt/category/uncategorized/"
   },
   {
     "path": "/category/informacija-pacientui/",
-    "title": "Informacija Pacientui",
+    "title": "Širdies tyrimai ir procedūros",
     "type": "listing",
     "source": "https://web.archive.org/web/20250813000631id_/https://kardiologas.lt/category/informacija-pacientui/"
   },
   {
     "path": "/stento-implantavimas/",
-    "title": "Apie Stento Implantavimą",
+    "title": "Širdies kraujagyslių stentavimas",
     "type": "article",
     "source": "https://web.archive.org/web/20250810001320id_/https://kardiologas.lt/stento-implantavimas/"
   },
   {
     "path": "/informacija-pacientui/",
-    "title": "Informacija Pacientui",
+    "title": "Informacija pacientams",
     "type": "listing",
     "source": "https://web.archive.org/web/20250219050958id_/https://www.kardiologas.lt/informacija-pacientui/"
   },
   {
     "path": "/daugiasluoksne-sirdies-kompiuterine-tomografija/",
-    "title": "Apie daugiasluoksnę širdies kompiuterinę tomografiją",
+    "title": "Širdies kompiuterinė tomografija",
     "type": "article",
     "source": "https://web.archive.org/web/20250810004903/https://kardiologas.lt/daugiasluoksne-sirdies-kompiuterine-tomografija/"
   },
   {
     "path": "/paslaugos-ir-tyrimai/",
     "type": "listing",
-    "note": "Preserves the original slider link."
+    "note": "Preserves the original slider link.",
+    "title": "Kardiologijos paslaugos ir tyrimai"
   },
   {
     "path": "/informacija-pacientams/page/2/",
     "type": "listing",
-    "note": "Pagination reconstructed from the recovered category archive; page 2 capture unavailable."
+    "note": "Pagination reconstructed from the recovered category archive; page 2 capture unavailable.",
+    "title": "Informacija pacientams – 2 puslapis"
   },
   {
     "path": "/informacija-pacientui/page/2/",
     "type": "listing",
-    "note": "Pagination reconstructed from the recovered category archive; page 2 capture unavailable."
+    "note": "Pagination reconstructed from the recovered category archive; page 2 capture unavailable.",
+    "title": "Informacija pacientams – 2 puslapis"
   }
 ]

@@ -1,8 +1,9 @@
 ---
-title: 'Paslaugos Ir Tyrimai'
+title: 'Kardiologijos paslaugos ir tyrimai'
+seoTitle: 'Kardiologijos paslaugos ir širdies tyrimai Kaune'
 path: '/paslaugos-ir-tyrimai/'
 type: 'listing'
-description: 'Kardiologo konsultacija, paslaugos ir tyrimai.'
+description: 'Kardiologo konsultacija, širdies echoskopija, veloergometrija, Holterio ir kraujospūdžio stebėjimas kabinete „Pulsas“ Kaune. Susipažinkite su paslaugomis.'
 entries:
   [
     '/kardiologo-konsultacija/',

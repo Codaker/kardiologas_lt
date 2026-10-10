@@ -1,28 +1,33 @@
 ---
-title: 'Kardiologijos kabinetas „PULSAS“'
-description: 'Kardiologas V. Grinius įsteigė konsultacinį diagnostinį kabinetą “Pulsas”. Čia konsultuojami ligoniai, sergantys širdies ligomis – padidėjusio kraujo spaudimo liga (arba hipertenzija), krūtinės angina (stenokardija), persirgę širdies infarktu, po širdies kraujagyslių (šuntavimo) operacijos, prieš ir po kraujagyslių išplėtimo procedūros (angioplastikos ir stentavimo), sergantys širdies ritmo sutrikimais, širdies reumatu ir kt.'
-phone: '0-37-392777'
+title: 'Kardiologijos kabinetas „Pulsas“'
+description: 'Kardiologo V. Griniaus konsultacijos ir širdies tyrimai kabinete „Pulsas“, Kaune, Sodų g. 56. Registracija telefonu arba internetu.'
+phone: '0 37 392777'
 phoneHref: '+37037392777'
 email: 'kardiologas@yahoo.com'
-address: '56 Sodų gatvė, Kaunas'
-hours: 'Pirmadienis-Penktadienis: 11.00 - 19.00 / Savaitgaliais nedirbame'
-registrationHours: '12:00 – 14:00'
+address: 'Sodų gatvė 56, Kaunas'
+streetAddress: 'Sodų gatvė 56'
+city: 'Kaunas'
+doctorName: 'V. Grinius'
+hours: 'Pirmadieniais–penktadieniais 11:00–19:00 / Savaitgaliais nedirbame'
+opens: '11:00'
+closes: '19:00'
+registrationOpens: '12:00'
+registrationCloses: '14:00'
 logo: '../../assets/images/brand/pulsas-logo.jpg'
 footerLogo: '../../assets/images/brand/pulsas-logo-footer.jpg'
+socialImage: '../../assets/images/clinic/virgilijus-grinius.jpg'
+socialImageAlt: 'Gydytojas kardiologas V. Grinius kabinete „Pulsas“ Kaune'
 pageBackground: '../../assets/images/backgrounds/page-title.png'
 contactBackground: '../../assets/images/backgrounds/contact-texture.png'
 services:
   [
-    { 'title': 'Kardiologo Konsultacija', 'path': '/kardiologo-konsultacija/' },
+    { 'title': 'Kardiologo konsultacija', 'path': '/kardiologo-konsultacija/' },
     { 'title': 'Echokardioskopija', 'path': '/echokardioskopija/' },
     { 'title': 'Veloergometrija', 'path': '/veloergometrija/' },
-    { 'title': 'Holterio Monitoravimas', 'path': '/holterio-monitoravimas/' },
+    { 'title': 'Holterio monitoravimas', 'path': '/holterio-monitoravimas/' },
+    { 'title': 'Paros kraujospūdžio stebėjimas', 'path': '/kraujo-spaudimas/' },
     {
-      'title': 'Kraujo spaudimo matavimas parą laiko',
-      'path': '/kraujo-spaudimas/',
-    },
-    {
-      'title': 'Asmeninis Elektrokardiografas',
+      'title': 'Asmeninis elektrokardiografas',
       'path': '/asmeninis-elektrokardiografas/',
     },
   ]
@@ -31,7 +36,7 @@ video: 'https://www.youtube.com/embed/pMh1-heVccM'
 videoTitle: 'Kodėl verta konsultuotis PULSE'
 faqTitle: 'Dažniausiai užduodami klausimai'
 videoPoster: '../../assets/images/clinic/consultation-video.png'
-patientTitle: 'Informacija Pacientui'
+patientTitle: 'Informacija pacientams'
 ---
 
 Konsultuojame ligonius, sergančius širdies ligomis, padidėjusio kraujo spaudimo liga (arba hipertenzija), krūtinės angina (stenokardija), persirgus širdies infarktu, po širdies kraujagyslių (šuntavimo) operacijos, prieš ir po kraujagyslių išplėtimo procedūros

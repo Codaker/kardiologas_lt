@@ -36,7 +36,7 @@ const { path = '/' } = Astro.props;
         loading="eager"
         alt="Pulsas"
       />
-      <span>Kardiologijos kabinetas "PULSAS"</span>
+      <span>{site.title}</span>
     </a>
     <button
       class="menu-toggle"
@@ -61,7 +61,7 @@ const { path = '/' } = Astro.props;
         <li class="dropdown">
           <div class="nav-parent">
             <a
-              href={withBase('/category/paslaugos-ir-tyrimai/')}
+              href={withBase('/paslaugos-ir-tyrimai/')}
               aria-current={
                 path.includes('paslaugos-ir-tyrimai') ? 'page' : undefined
               }
@@ -97,7 +97,7 @@ const { path = '/' } = Astro.props;
               path.startsWith('/informacija-pacient') ? 'page' : undefined
             }
           >
-            Informacija pacientui
+            Informacija pacientams
           </a>
         </li>
         <li class="dropdown">
@@ -114,7 +114,7 @@ const { path = '/' } = Astro.props;
           </div>
           <ul id="other-menu" class="submenu">
             <li>
-              <a href={withBase('/apie-mus/')}>Apie Mus</a>
+              <a href={withBase('/apie-mus/')}>Apie mus</a>
             </li>
             <li>
               <a href={withBase('/kardiologas-kontaktai/')}>Kontaktai</a>

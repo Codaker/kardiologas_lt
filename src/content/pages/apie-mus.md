@@ -1,8 +1,9 @@
 ---
-title: 'Apie Mus'
+title: 'Apie kabinetą „Pulsas“'
+seoTitle: 'Kardiologas V. Grinius ir kabinetas Kaune'
 path: '/apie-mus/'
 type: 'about'
-description: 'Pateikiama informacija apie įstaigą Pulsas, kurioje kardiologas, medicinos mokslų daktaras, Nusipelnęs Lietuvos gydytojas V.Grinius teikia konsultacijas'
+description: 'Susipažinkite su gydytoju kardiologu V. Griniumi ir konsultaciniu diagnostiniu kabinetu „Pulsas“ Kaune. Sužinokite apie patirtį ir teikiamas paslaugas.'
 excerpt: ''
 categories: []
 entries: []

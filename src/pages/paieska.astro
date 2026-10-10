@@ -2,8 +2,13 @@
 import { getCollection } from 'astro:content';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { withBase } from '../lib/urls';
+import { canonicalPath } from '../lib/seo.mjs';
 const pages = (await getCollection('pages'))
-  .filter((p) => ['article', 'about', 'contact'].includes(p.data.type))
+  .filter(
+    (p) =>
+      ['article', 'about', 'contact'].includes(p.data.type) &&
+      canonicalPath(p.data.path) === p.data.path,
+  )
   .map((p) => ({
     title: p.data.title,
     path: withBase(p.data.path),
@@ -11,7 +16,13 @@ const pages = (await getCollection('pages'))
   }));
 ---
 
-<SiteLayout title="Paieška" path="/paieska/" noindex>
+<SiteLayout
+  title="Paieška"
+  seoTitle="Paieška: kardiologijos paslaugos ir informacija"
+  description="Ieškokite informacijos apie kabineto „Pulsas“ paslaugas, širdies tyrimus, pasiruošimą konsultacijai ir registraciją."
+  path="/paieska/"
+  noindex
+>
   <section class="container search-page">
     <h1>Paieška</h1>
     <form id="search-form">

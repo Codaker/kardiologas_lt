@@ -1,8 +1,9 @@
 ---
-title: 'Pradžia'
+title: 'Kardiologas Kaune'
+seoTitle: 'Kardiologas Kaune – V. Griniaus kabinetas'
 path: '/'
 type: 'home'
-description: 'Kardiologas V. Grinius įsteigė konsultacinį diagnostinį kabinetą “Pulsas”. Čia konsultuojami ligoniai, sergantys širdies ligomis – padidėjusio kraujo spaudimo liga (arba hipertenzija), krūtinės angina (stenokardija), persirgę širdies infarktu, po širdies kraujagyslių (šuntavimo) operacijos, prieš ir po kraujagyslių išplėtimo procedūros (angioplastikos ir stentavimo), sergantys širdies ritmo sutrikimais, širdies reumatu ir kt.'
+description: 'Kardiologo V. Griniaus konsultacijos ir širdies tyrimai kabinete „Pulsas“, Kaune, Sodų g. 56. Registruokitės telefonu arba internetu.'
 excerpt: ''
 categories: []
 entries:
