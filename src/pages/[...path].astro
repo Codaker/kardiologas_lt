@@ -1,0 +1,264 @@
+---
+import {
+  getCollection,
+  getEntry,
+  render,
+  type CollectionEntry,
+} from 'astro:content';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Slider from '../components/Slider.astro';
+import VideoFaq from '../components/VideoFaq.astro';
+import Sidebar from '../components/Sidebar.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { withBase } from '../lib/urls';
+import { backgroundFor } from '../lib/assets';
+export async function getStaticPaths() {
+  return (await getCollection('pages')).map((page) => ({
+    params: {
+      path:
+        page.data.path === '/'
+          ? undefined
+          : page.data.path.replace(/^\/|\/$/g, ''),
+    },
+    props: { page },
+  }));
+}
+interface Props {
+  page: CollectionEntry<'pages'>;
+}
+const { page } = Astro.props;
+const { Content } = await render(page);
+const site = (await getEntry('settings', 'site'))!.data;
+const pages = await getCollection('pages');
+const features = await Promise.all(
+  (await getCollection('features'))
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(async (e) => ({ ...e, ...(await render(e)) })),
+);
+const listed = await Promise.all(
+  page.data.entries
+    .map((path) => pages.find((e) => e.data.path === path))
+    .filter((e): e is CollectionEntry<'pages'> => !!e)
+    .map(async (e) => ({ ...e, ...(await render(e)) })),
+);
+const homeArticles = [
+  '/3781-2/',
+  '/kaip-pasiruosti-pries-konsultacija/',
+  '/apie-koronarografija-vainikiniu-arteriju-angiografija-sirdies-kraujagysliu-zondavimas/',
+].map((path) => pages.find((p) => p.data.path === path)!);
+const patientListing =
+  page.data.type === 'listing' &&
+  page.data.path.startsWith('/informacija-pacient');
+const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
+---
+
+<SiteLayout
+  title={page.data.title}
+  description={page.data.description}
+  path={page.data.path}
+>
+  {page.data.type === 'home' && (
+    <>
+      <Slider />
+      <section
+        class="feature-band"
+        style={backgroundFor(
+          '/vendor/medici.wp1.zootemplate.com/wp-content/uploads/2018/11/background-feature.png',
+        )}
+      >
+        <div class="container feature-grid">
+          {features.map((feature) => (
+            <div class="feature">
+              <i
+                class:list={['cs-font', feature.data.icon]}
+                aria-hidden="true"
+              ></i>
+              <h2>{feature.data.title}</h2>
+              <div>
+                <feature.Content />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <VideoFaq />
+      <section class="container home-articles">
+        <h2 class="section-heading">
+          {site.patientTitle}
+          <svg aria-hidden="true" viewBox="0 0 86 24">
+            <path d="M0 12h31l4-6 4 13 5-18 5 22 4-13 4 2h29" />
+          </svg>
+        </h2>
+        <div class="article-cards">
+          {homeArticles.map((article) => (
+            <article>
+              <h3>
+                <a href={withBase(article.data.path)}>{article.data.title}</a>
+              </h3>
+              <p>{article.data.excerpt.slice(0, 165)}…</p>
+              <a class="button small" href={withBase(article.data.path)}>
+                Skaityti Daugiau
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  )}
+  {page.data.type === 'article' && (
+    <div class="container article-layout">
+      <Sidebar path={page.data.path} />
+      <article class="article-body prose">
+        <h1>{page.data.title}</h1>
+        <Content />
+      </article>
+    </div>
+  )}
+  {page.data.type === 'about' && (
+    <>
+      <div
+        class="page-banner"
+        style={backgroundFor('/wp-content/uploads/2018/09/breadcrumb_1.png')}
+      >
+        <h1>{page.data.title}</h1>
+        <p>
+          <a href={withBase('/')}>Pradžia</a> / {page.data.title}
+        </p>
+      </div>
+      <section class="container about-layout">
+        <article class="prose">
+          <Content />
+        </article>
+        <div
+          class="about-image"
+          style={backgroundFor('/wp-content/uploads/2018/09/about-us.png')}
+          aria-hidden="true"
+        ></div>
+      </section>
+      <VideoFaq video="https://www.youtube.com/embed/vbpKD-mrILo" />
+    </>
+  )}
+  {page.data.type === 'contact' && (
+    <>
+      <div class="contact-heading container">
+        <h1>{page.data.title}</h1>
+        <p>Registruokitės telefonu arba internetu</p>
+      </div>
+      <article class="container contact-content prose reveal-flip">
+        <Content />
+      </article>
+      <ContactForm />
+      <iframe
+        class="contact-map"
+        src={site.map}
+        title="Pulsas – Sodų gatvė 56, Kaunas"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      />
+    </>
+  )}
+  {page.data.type === 'listing' && (
+    <>
+      <div
+        class="page-banner"
+        style={backgroundFor('/wp-content/uploads/2018/09/breadcrumb_1.png')}
+      >
+        <h1>{page.data.title}</h1>
+      </div>
+      <div
+        class:list={[
+          'container listing-layout',
+          { 'patient-listing': patientListing },
+        ]}
+      >
+        {patientListing ? (
+          <aside class="sidebar">
+            <h2>Naujausi įrašai</h2>
+            <ul>
+              {[
+                '/3792-2/',
+                ...homeArticles.map((p) => p.data.path),
+                '/stento-implantavimas/',
+              ].map((path) => {
+                const post = pages.find((p) => p.data.path === path);
+                return (
+                  post && (
+                    <li>
+                      <a href={withBase(path)}>{post.data.title}</a>
+                    </li>
+                  )
+                );
+              })}
+            </ul>
+            <h2>Kategorijos</h2>
+            <ul>
+              <li>
+                <a href={withBase('/category/informacija-pacientui/')}>
+                  Informacija Pacientui
+                </a>
+              </li>
+              <li>
+                <a href={withBase('/category/paslaugos-ir-tyrimai/')}>
+                  Paslaugos Ir Tyrimai
+                </a>
+              </li>
+              <li>
+                <a href={withBase('/category/uncategorized/')}>Uncategorized</a>
+              </li>
+            </ul>
+          </aside>
+        ) : (
+          <Sidebar path={page.data.path} />
+        )}
+        <div class="post-list">
+          {listed.map((entry) => (
+            <article class="prose">
+              <h2>
+                <a href={withBase(entry.data.path)}>{entry.data.title}</a>
+              </h2>
+              {patientListing ? (
+                <entry.Content />
+              ) : (
+                <p>{entry.data.excerpt}…</p>
+              )}
+              <a class="button small" href={withBase(entry.data.path)}>
+                Skaityti Daugiau
+              </a>
+            </article>
+          ))}
+          {patientListing && (
+            <nav class="pagination" aria-label="Puslapiai">
+              <a
+                href={withBase(listingRoot)}
+                aria-current={page.data.pageNumber === 1 ? 'page' : undefined}
+              >
+                1
+              </a>
+              <a
+                href={withBase(listingRoot + 'page/2/')}
+                aria-current={page.data.pageNumber === 2 ? 'page' : undefined}
+              >
+                2
+              </a>
+            </nav>
+          )}
+        </div>
+      </div>
+    </>
+  )}
+</SiteLayout>
+<script>
+  const reveal = document.querySelector('.reveal-flip');
+  if (reveal && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          reveal.classList.add('is-visible');
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.05 },
+    );
+    observer.observe(reveal);
+  }
+</script>

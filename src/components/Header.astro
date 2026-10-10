@@ -1,0 +1,221 @@
+---
+import { getEntry } from 'astro:content';
+import { withBase } from '../lib/urls';
+const site = (await getEntry('settings', 'site'))!.data;
+const { path = '/' } = Astro.props;
+---
+
+<a class="skip-link" href="#main">
+  Pereiti prie turinio
+</a>
+<div class="topbar">
+  <div class="container topbar-inner">
+    <a href={`tel:${site.phoneHref}`}>
+      <i class="cs-font clever-icon-phone-2 blue" aria-hidden="true"></i>{' '}
+      {site.phone}
+    </a>
+    <a href={`mailto:${site.email}`}>
+      <span aria-hidden="true">✉</span> {site.email.replace('@', '[@]')}
+    </a>
+    <span>
+      <span class="blue" aria-hidden="true">
+        ◷
+      </span>{' '}
+      {site.hours}
+    </span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href={withBase('/')} aria-label="Pulsas – Pradžia">
+      <img src={withBase(site.logo)} width="113" height="60" alt="Pulsas" />
+      <span>Kardiologijos kabinetas "PULSAS"</span>
+    </a>
+    <button
+      class="menu-toggle"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+      aria-label="Atverti meniu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="main-navigation" aria-label="Pagrindinis meniu">
+      <ul class="nav-list">
+        <li>
+          <a
+            href={withBase('/')}
+            aria-current={path === '/' ? 'page' : undefined}
+          >
+            Pradžia
+          </a>
+        </li>
+        <li class="dropdown">
+          <div class="nav-parent">
+            <a
+              href={withBase('/category/paslaugos-ir-tyrimai/')}
+              aria-current={
+                path.includes('paslaugos-ir-tyrimai') ? 'page' : undefined
+              }
+            >
+              Paslaugos ir tyrimai
+            </a>
+            <button
+              class="submenu-toggle"
+              aria-label="Rodyti paslaugas"
+              aria-expanded="false"
+              aria-controls="services-menu"
+            >
+              ⌄
+            </button>
+          </div>
+          <ul id="services-menu" class="submenu">
+            {site.services.map((item) => (
+              <li>
+                <a
+                  href={withBase(item.path)}
+                  aria-current={path === item.path ? 'page' : undefined}
+                >
+                  {item.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+        <li>
+          <a
+            href={withBase('/informacija-pacientams/')}
+            aria-current={
+              path.startsWith('/informacija-pacient') ? 'page' : undefined
+            }
+          >
+            Informacija pacientui
+          </a>
+        </li>
+        <li class="dropdown">
+          <div class="nav-parent">
+            <a href={withBase('/apie-mus/')}>Kita</a>
+            <button
+              class="submenu-toggle"
+              aria-label="Rodyti kitus puslapius"
+              aria-expanded="false"
+              aria-controls="other-menu"
+            >
+              ⌄
+            </button>
+          </div>
+          <ul id="other-menu" class="submenu">
+            <li>
+              <a href={withBase('/apie-mus/')}>Apie Mus</a>
+            </li>
+            <li>
+              <a href={withBase('/kardiologas-kontaktai/')}>Kontaktai</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button
+        class="search-toggle"
+        aria-label="Paieška"
+        aria-expanded="false"
+        aria-controls="site-search"
+      >
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          aria-hidden="true"
+        >
+          <circle cx="10" cy="10" r="7" />
+          <path d="m15 15 7 7" />
+        </svg>
+      </button>
+      <a class="button" href={withBase('/kardiologas-kontaktai/')}>
+        Registracija
+      </a>
+    </div>
+  </div>
+  <div id="site-search" class="search-panel" hidden>
+    <form class="container" action={withBase('/paieska/')}>
+      <label for="search-input">Paieška svetainėje</label>
+      <div>
+        <input
+          id="search-input"
+          type="search"
+          name="s"
+          required
+          placeholder="Įrašykite paieškos žodį…"
+        />
+        <button class="button" type="submit">
+          Ieškoti
+        </button>
+      </div>
+    </form>
+  </div>
+</header>
+<noscript>
+  <style>
+    #main-navigation {
+      display: block !important;
+    }
+    .menu-toggle,
+    .search-toggle,
+    .submenu-toggle {
+      display: none !important;
+    }
+    @media (max-width: 1050px) {
+      .submenu {
+        display: block !important;
+      }
+      .header-inner {
+        padding-bottom: 12px;
+      }
+    }
+  </style>
+</noscript>
+<script>
+  const menu = document.querySelector<HTMLButtonElement>('.menu-toggle')!;
+  const nav = document.querySelector<HTMLElement>('#main-navigation')!;
+  menu.addEventListener('click', () => {
+    const open = menu.getAttribute('aria-expanded') !== 'true';
+    menu.setAttribute('aria-expanded', String(open));
+    nav.classList.toggle('is-open', open);
+  });
+  document
+    .querySelectorAll<HTMLButtonElement>('.submenu-toggle')
+    .forEach((button) =>
+      button.addEventListener('click', () => {
+        const open = button.getAttribute('aria-expanded') !== 'true';
+        button.setAttribute('aria-expanded', String(open));
+        button.closest('.dropdown')?.classList.toggle('is-open', open);
+      }),
+    );
+  const toggle = document.querySelector<HTMLButtonElement>('.search-toggle')!;
+  const panel = document.querySelector<HTMLElement>('#site-search')!;
+  toggle.addEventListener('click', () => {
+    panel.hidden = !panel.hidden;
+    toggle.setAttribute('aria-expanded', String(!panel.hidden));
+    if (!panel.hidden)
+      document.querySelector<HTMLInputElement>('#search-input')?.focus();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      panel.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+      menu.setAttribute('aria-expanded', 'false');
+      document
+        .querySelectorAll('.dropdown.is-open')
+        .forEach((el) => el.classList.remove('is-open'));
+      document
+        .querySelectorAll('.submenu-toggle')
+        .forEach((el) => el.setAttribute('aria-expanded', 'false'));
+    }
+  });
+</script>

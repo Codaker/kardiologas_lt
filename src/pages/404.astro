@@ -1,0 +1,15 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { withBase } from '../lib/urls';
+---
+
+<SiteLayout title="Puslapis nerastas" path="/404/" noindex>
+  <section class="container not-found">
+    <p class="blue">404</p>
+    <h1>Puslapis nerastas</h1>
+    <p>Patikrinkite adresą arba grįžkite į pradžią.</p>
+    <a class="button" href={withBase('/')}>
+      Pradžia
+    </a>
+  </section>
+</SiteLayout>

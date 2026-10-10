@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { withBase } from '../lib/urls';
+const pages = (await getCollection('pages'))
+  .filter((p) => ['article', 'about', 'contact'].includes(p.data.type))
+  .map((p) => ({
+    title: p.data.title,
+    path: withBase(p.data.path),
+    text: (p.body || '').replace(/<[^>]*>/g, '').replace(/[#*_]/g, ''),
+  }));
+---
+
+<SiteLayout title="Paieška" path="/paieska/" noindex>
+  <section class="container search-page">
+    <h1>Paieška</h1>
+    <form id="search-form">
+      <label for="query">Paieškos žodis</label>
+      <input type="search" id="query" name="s" required />
+      <button class="button">Ieškoti</button>
+    </form>
+    <p id="search-status" role="status"></p>
+    <div id="search-results"></div>
+    <noscript>
+      <p>Paieškai reikia JavaScript. Turinį rasite pagrindiniame meniu.</p>
+    </noscript>
+  </section>
+  <script
+    id="search-data"
+    type="application/json"
+    set:html={JSON.stringify(pages).replaceAll('<', '\u003c')}
+  />
+</SiteLayout>
+<script>
+  const data = JSON.parse(
+    document.querySelector('#search-data')!.textContent!,
+  ) as { title: string; path: string; text: string }[];
+  const input = document.querySelector<HTMLInputElement>('#query')!;
+  const results = document.querySelector('#search-results')!;
+  const normalize = (s: string) =>
+    s
+      .toLocaleLowerCase('lt')
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '');
+  function search() {
+    const query = input.value.trim();
+    const matches = query
+      ? data.filter((p) =>
+          normalize(p.title + ' ' + p.text).includes(normalize(query)),
+        )
+      : [];
+    results.replaceChildren();
+    document.querySelector('#search-status')!.textContent = query
+      ? `Rasta: ${matches.length}`
+      : '';
+    for (const p of matches) {
+      const article = document.createElement('article');
+      const h2 = document.createElement('h2');
+      const a = document.createElement('a');
+      a.href = p.path;
+      a.textContent = p.title;
+      h2.append(a);
+      const excerpt = document.createElement('p');
+      excerpt.textContent = p.text.slice(0, 220) + '…';
+      article.append(h2, excerpt);
+      results.append(article);
+    }
+    const url = new URL(location.href);
+    url.searchParams.set('s', query);
+    history.replaceState(null, '', url);
+  }
+  input.value = new URLSearchParams(location.search).get('s') || '';
+  search();
+  document.querySelector('#search-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    search();
+  });
+</script>

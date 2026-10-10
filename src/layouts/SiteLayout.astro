@@ -1,0 +1,69 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LegacyQueries from '../components/LegacyQueries.astro';
+import { withBase } from '../lib/urls';
+import '@fontsource/rubik/latin-ext-400.css';
+import '@fontsource/rubik/latin-400.css';
+import '@fontsource/rubik/latin-ext-500.css';
+import '@fontsource/rubik/latin-500.css';
+import '@fontsource/rubik/latin-ext-700.css';
+import '@fontsource/rubik/latin-700.css';
+import '@fontsource/rubik/latin-ext-300.css';
+import '@fontsource/rubik/latin-300.css';
+import '@fontsource/open-sans/latin-ext-400.css';
+import '@fontsource/open-sans/latin-400.css';
+import '../styles/global.css';
+interface Props {
+  title: string;
+  description?: string;
+  path?: string;
+  noindex?: boolean;
+}
+const {
+  title,
+  description = 'V. Griniaus konsultacinis diagnostinis kabinetas „Pulsas“. Kardiologijos paslaugos Kaune.',
+  path = '/',
+  noindex = false,
+} = Astro.props;
+const canonical = new URL(withBase(path), Astro.site);
+---
+
+<!doctype html>
+<html lang="lt" id="top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} - kardiologas.lt</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow'} />
+    <meta property="og:title" content={`${title} - kardiologas.lt`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="lt_LT" />
+    <meta property="og:url" content={canonical} />
+    <meta
+      property="og:image"
+      content={
+        new URL(
+          withBase('/wp-content/uploads/2019/04/logotipas.jpg'),
+          Astro.site,
+        )
+      }
+    />
+    <link
+      rel="icon"
+      href={withBase('/wp-content/uploads/2019/04/logotipas.jpg')}
+    />
+    <meta name="theme-color" content="#2e9ce6" />
+    {path === '/' && <LegacyQueries />}
+  </head>
+  <body>
+    <Header path={path} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

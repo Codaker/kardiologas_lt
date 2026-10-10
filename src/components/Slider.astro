@@ -1,0 +1,206 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import { withBase } from '../lib/urls';
+const slides = await Promise.all(
+  (await getCollection('slides'))
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(async (s) => ({ ...s, ...(await render(s)) })),
+);
+const site = (await getEntry('settings', 'site'))!.data;
+---
+
+<section
+  class="hero"
+  aria-label="Kardiologijos kabinetas Pulsas"
+  aria-roledescription="karuselė"
+>
+  <div class="slides">
+    {slides.map((slide, i) => (
+      <div
+        class:list={['slide', `slide-${i + 1}`, { 'is-active': i === 0 }]}
+        aria-hidden={i !== 0}
+        inert={i !== 0}
+      >
+        {slide.data.type === 'image' ? (
+          <>
+            <img
+              class="slide-image"
+              src={withBase(slide.data.image)}
+              alt={
+                i === 0
+                  ? 'Gydytojas V. Grinius kardiologijos kabinete'
+                  : 'Kardiologijos tyrimai'
+              }
+              width={i === 0 ? 1920 : 1470}
+              height={i === 0 ? 1280 : 882}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchpriority={i === 0 ? 'high' : 'auto'}
+            />
+            <div class="slide-copy">
+              {i === 0 ? (
+                <h1 aria-label={slide.data.title}>
+                  {[...slide.data.title].map((letter, index) => (
+                    <span
+                      class="letter"
+                      style={`--i:${index}`}
+                      aria-hidden="true"
+                    >
+                      {letter === ' ' ? '\u00a0' : letter}
+                    </span>
+                  ))}
+                </h1>
+              ) : (
+                <h2>
+                  {slide.data.title}
+                  <strong>{slide.data.accent}</strong>
+                </h2>
+              )}
+              <div class="slide-description">
+                <slide.Content />
+              </div>
+              <a class="button" href={withBase(slide.data.href)}>
+                {slide.data.button}
+              </a>
+            </div>
+          </>
+        ) : (
+          <iframe
+            class="hero-map"
+            data-src={site.map}
+            title="Pulsas – Sodų gatvė 56, Kaunas"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          />
+        )}
+      </div>
+    ))}
+  </div>
+  <button class="slide-arrow previous" aria-label="Ankstesnė skaidrė">
+    ‹
+  </button>
+  <button class="slide-arrow next" aria-label="Kita skaidrė">
+    ›
+  </button>
+  <div class="slider-controls">
+    <div class="slide-dots">
+      {slides.map((s, i) => (
+        <button
+          class:list={{ active: i === 0 }}
+          aria-label={`${i + 1}: ${s.data.title}`}
+          aria-pressed={i === 0}
+          data-slide={i}
+        />
+      ))}
+    </div>
+    <button
+      class="slide-pause"
+      aria-label="Pristabdyti skaidres"
+      aria-pressed="false"
+    >
+      Ⅱ
+    </button>
+  </div>
+</section>
+<script>
+  const hero = document.querySelector<HTMLElement>('.hero');
+  if (hero) {
+    const slides = [...hero.querySelectorAll<HTMLElement>('.slide')];
+    const dots = [...hero.querySelectorAll<HTMLButtonElement>('[data-slide]')];
+    const pause = hero.querySelector<HTMLButtonElement>('.slide-pause')!;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+    let current = 0,
+      paused = reduced.matches,
+      timer: ReturnType<typeof setInterval> | undefined;
+    function stop() {
+      clearInterval(timer);
+    }
+    function show(index: number) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        s.classList.toggle('is-active', i === current);
+        s.setAttribute('aria-hidden', String(i !== current));
+        s.inert = i !== current;
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+        d.setAttribute('aria-pressed', String(i === current));
+      });
+      const map =
+        slides[current].querySelector<HTMLIFrameElement>('iframe[data-src]');
+      if (map && !map.src) map.src = map.dataset.src!;
+    }
+    function start() {
+      stop();
+      if (
+        !paused &&
+        !document.hidden &&
+        !hero!.matches(':hover') &&
+        !hero!.contains(document.activeElement)
+      )
+        timer = setInterval(() => show(current + 1), 9000);
+    }
+    function updatePause() {
+      pause.setAttribute('aria-pressed', String(paused));
+      pause.setAttribute(
+        'aria-label',
+        paused ? 'Tęsti skaidres' : 'Pristabdyti skaidres',
+      );
+      pause.textContent = paused ? '▶' : 'Ⅱ';
+    }
+    dots.forEach((d, i) =>
+      d.addEventListener('click', () => {
+        show(i);
+        start();
+      }),
+    );
+    hero.querySelector('.previous')?.addEventListener('click', () => {
+      show(current - 1);
+      start();
+    });
+    hero.querySelector('.next')?.addEventListener('click', () => {
+      show(current + 1);
+      start();
+    });
+    pause.addEventListener('click', () => {
+      paused = !paused;
+      updatePause();
+      start();
+    });
+    hero.addEventListener('mouseenter', stop);
+    hero.addEventListener('mouseleave', start);
+    hero.addEventListener('focusin', stop);
+    hero.addEventListener('focusout', () => setTimeout(start, 0));
+    hero.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        show(current + 1);
+      }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        show(current - 1);
+      }
+    });
+    let touchX = 0;
+    hero.addEventListener(
+      'touchstart',
+      (e) => (touchX = e.changedTouches[0].clientX),
+      { passive: true },
+    );
+    hero.addEventListener(
+      'touchend',
+      (e) => {
+        const distance = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(distance) > 60) show(current + (distance > 0 ? -1 : 1));
+      },
+      { passive: true },
+    );
+    document.addEventListener('visibilitychange', start);
+    reduced.addEventListener('change', () => {
+      paused = reduced.matches;
+      updatePause();
+      start();
+    });
+    updatePause();
+    start();
+  }
+</script>

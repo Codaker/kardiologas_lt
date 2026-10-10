@@ -1,0 +1,71 @@
+---
+import { backgroundFor } from '../lib/assets';
+---
+
+<section
+  class="contact-form-section"
+  style={backgroundFor(
+    '/wp-content/uploads/2018/11/background-get-in-touch.png',
+  )}
+>
+  <div class="container">
+    <h2 class="section-heading">Susisiekite su mumis</h2>
+    <form id="contact-form">
+      <div class="form-grid">
+        <label>
+          Jūsų Vardas *
+          <input name="name" autocomplete="name" required maxlength="200" />
+        </label>
+        <label>
+          Jūsų E-paštas *
+          <input
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            maxlength="200"
+          />
+        </label>
+      </div>
+      <label>
+        Tema
+        <input name="subject" maxlength="200" />
+      </label>
+      <label>
+        Jūsų žinutė
+        <textarea name="message" rows="7" required maxlength="2000"></textarea>
+      </label>
+      <p>
+        Paspaudus mygtuką, laiško juodraštis bus atidarytas jūsų el. pašto
+        programoje. Laišką išsiųskite joje.
+      </p>
+      <button class="button" type="submit">
+        Atidaryti el. laišką
+      </button>
+      <p class="form-status" role="status"></p>
+    </form>
+    <noscript>
+      <p>
+        Rašykite{' '}
+        <a href="mailto:kardiologas@yahoo.com">kardiologas@yahoo.com</a>.
+      </p>
+    </noscript>
+  </div>
+</section>
+<script>
+  document
+    .querySelector<HTMLFormElement>('#contact-form')
+    ?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const form = event.currentTarget as HTMLFormElement;
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const subject = String(
+        data.get('subject') || 'Užklausa iš kardiologas.lt',
+      );
+      const body = `Vardas: ${data.get('name')}\nEl. paštas: ${data.get('email')}\n\n${data.get('message')}`;
+      window.location.href = `mailto:kardiologas@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      form.querySelector('.form-status')!.textContent =
+        'Laiško juodraštis paruoštas. Jei el. pašto programa neatsidarė, rašykite kardiologas@yahoo.com.';
+    });
+</script>

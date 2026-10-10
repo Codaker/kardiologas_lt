@@ -1,0 +1,21 @@
+---
+import { withBase } from '../../lib/urls';
+const target = withBase('/feed.xml');
+---
+
+<!doctype html>
+<html lang="lt">
+  <head>
+    <meta charset="utf-8" />
+    <title>Įrašų RSS srautas - kardiologas.lt</title>
+    <meta
+      name="description"
+      content="Kardiologijos kabineto Pulsas RSS srautas."
+    />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+  </head>
+  <body>
+    <h1>Įrašų RSS srautas</h1>
+    <a href={target}>Atidaryti RSS srautą</a>
+  </body>
+</html>

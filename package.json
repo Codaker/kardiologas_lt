@@ -1,0 +1,37 @@
+{
+  "name": "kardiologas-lt",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=9.6.5"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "migrate:archive": "node scripts/import-archive.mjs",
+    "verify": "node scripts/verify-build.mjs",
+    "test:browser": "node scripts/browser-check.mjs",
+    "format": "prettier --write src scripts astro.config.mjs package.json tsconfig.json README.md .github/workflows/deploy.yml"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/markdown-remark": "^7.3.2",
+    "@fontsource/open-sans": "^5.3.0",
+    "@fontsource/rubik": "^5.3.0",
+    "astro": "^7.3.8",
+    "rehype-raw": "^7.0.0",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^24.19.2",
+    "cheerio": "^1.2.0",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.1",
+    "turndown": "^7.2.4"
+  }
+}

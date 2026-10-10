@@ -1,0 +1,95 @@
+---
+import { getEntry, render } from 'astro:content';
+import { withBase } from '../lib/urls';
+const entry = (await getEntry('settings', 'site'))!;
+const site = entry.data;
+const { Content } = await render(entry);
+---
+
+<footer class="site-footer">
+  <div class="container contact-strip">
+    <a href={`tel:${site.phoneHref}`}>
+      <i class="cs-font clever-icon-phone-2" aria-hidden="true"></i>
+      <div>
+        <span>Registracija telefonu (12 val – 14 val)</span>
+        <strong>{site.phone}</strong>
+      </div>
+    </a>
+    <a href={`mailto:${site.email}`}>
+      <i class="cs-font clever-icon-mail-4" aria-hidden="true"></i>
+      <div>
+        <span>Parašykite mums</span>
+        <strong>{site.email.replace('@', '[@]')}</strong>
+      </div>
+    </a>
+    <a href={withBase('/kardiologas-kontaktai/')}>
+      <i class="cs-font clever-icon-place-localizer" aria-hidden="true"></i>
+      <div>
+        <span>Mus Rasite</span>
+        <strong>{site.address}</strong>
+      </div>
+    </a>
+  </div>
+  <div class="container footer-grid">
+    <div>
+      <img
+        class="footer-logo"
+        src={withBase(site.footerLogo)}
+        width="154"
+        height="70"
+        alt="Pulsas"
+        loading="lazy"
+      />
+      <Content />
+    </div>
+    <div>
+      <h2>Paslaugos</h2>
+      <ul>
+        {site.services.map((item) => (
+          <li>
+            <a href={withBase(item.path)}>{item.title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h2>Informacija</h2>
+      <ul>
+        <li>
+          <a href={withBase('/apie-mus/')}>Apie Mus</a>
+        </li>
+        <li>
+          <a href={withBase('/kardiologas-kontaktai/')}>Kontaktai</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h2>Kontaktai</h2>
+      <address>
+        <p>
+          <i class="cs-font clever-icon-place-localizer" aria-hidden="true"></i>
+          {site.address}, Lietuva
+        </p>
+        <p>
+          <i class="cs-font clever-icon-mail-4" aria-hidden="true"></i>
+          <a href={`mailto:${site.email}`}>{site.email.replace('@', '[@]')}</a>
+        </p>
+        <p>
+          <i class="cs-font clever-icon-phone-2" aria-hidden="true"></i>
+          <a href={`tel:${site.phoneHref}`}>
+            {site.phone}
+            <small>nuo 12 val. iki 14 val.</small>
+          </a>
+        </p>
+      </address>
+    </div>
+  </div>
+  <div class="copyright">
+    <div class="container">
+      Copyright © 2025 kardiologas.lt. All rights reserved.
+    </div>
+  </div>
+</footer>
+<a class="back-top" href="#top" aria-label="Grįžti į viršų">
+  ↑
+</a>

@@ -1,0 +1,39 @@
+---
+import { getEntry } from 'astro:content';
+import { withBase } from '../lib/urls';
+const site = (await getEntry('settings', 'site'))!.data;
+const { path } = Astro.props;
+---
+
+<aside class="sidebar">
+  <h2>Tyrimai ir Paslaugos</h2>
+  <ul>
+    {site.services.map((s) => (
+      <li>
+        <a
+          href={withBase(s.path)}
+          aria-current={path === s.path ? 'page' : undefined}
+        >
+          {s.title}
+        </a>
+      </li>
+    ))}
+  </ul>
+  <div class="opening-hours">
+    <h2>Darbo laikas</h2>
+    <dl>
+      <div>
+        <dt>Pirmadienis – Penktadienis:</dt>
+        <dd>11.00–19.00</dd>
+      </div>
+      <div>
+        <dt>Šeštadienis:</dt>
+        <dd>Nedirbam</dd>
+      </div>
+      <div>
+        <dt>Sekmadienis:</dt>
+        <dd>Nedirbam</dd>
+      </div>
+    </dl>
+  </div>
+</aside>

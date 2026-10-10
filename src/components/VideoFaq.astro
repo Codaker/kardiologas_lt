@@ -1,0 +1,74 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import { withBase } from '../lib/urls';
+const { video } = Astro.props;
+const site = (await getEntry('settings', 'site'))!.data;
+const faq = await Promise.all(
+  (await getCollection('faq'))
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(async (entry) => ({ ...entry, ...(await render(entry)) })),
+);
+---
+
+<section class="container video-faq">
+  <div>
+    <h2>{site.videoTitle}</h2>
+    <a
+      class="video-launch"
+      href={video || site.video}
+      data-video={video || site.video}
+      aria-label="Žiūrėti vaizdo įrašą: Kodėl verta konsultuotis PULSE"
+    >
+      <img
+        src={withBase(site.videoPoster)}
+        width="690"
+        height="450"
+        loading="lazy"
+        alt="Kodėl verta konsultuotis PULSE"
+      />
+      <span class="play-icon" aria-hidden="true">
+        ▶
+      </span>
+    </a>
+  </div>
+  <div class="faq">
+    <h2>{site.faqTitle}</h2>
+    {faq.map((entry, i) => (
+      <details name="questions" open={i === 0}>
+        <summary>{entry.data.title}</summary>
+        <div class="faq-answer">
+          <entry.Content />
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+<dialog class="video-dialog" aria-label="Vaizdo įrašas">
+  <button class="dialog-close" aria-label="Uždaryti vaizdo įrašą">
+    ×
+  </button>
+  <div class="video-container"></div>
+</dialog>
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('.video-dialog')!;
+  const container = dialog.querySelector<HTMLElement>('.video-container')!;
+  document.querySelectorAll<HTMLAnchorElement>('[data-video]').forEach((link) =>
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const iframe = document.createElement('iframe');
+      iframe.src = link.dataset.video!;
+      iframe.title = 'Kodėl verta konsultuotis PULSE';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      container.replaceChildren(iframe);
+      dialog.showModal();
+    }),
+  );
+  dialog
+    .querySelector('.dialog-close')
+    ?.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => container.replaceChildren());
+</script>
