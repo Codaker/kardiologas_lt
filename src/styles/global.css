@@ -1,6 +1,6 @@
 :root {
   --blue: #2e9ce6;
-  --link: #147bae;
+  --link: var(--blue);
   --ink: #111;
   --muted: #666;
   --line: #e9e9e9;
@@ -960,16 +960,6 @@ button:disabled {
   object-fit: cover;
   object-position: center;
 }
-.contact-content {
-  padding-block: 65px;
-}
-.contact-content > p:first-child {
-  font-size: 20px;
-  color: #111;
-}
-.contact-content h5 {
-  font-size: 20px;
-}
 .contact-form-section {
   background: #f7f7f7;
   background-position: center;
@@ -1011,9 +1001,6 @@ textarea {
   width: 100%;
   height: 450px;
   display: block;
-}
-.reveal-flip.is-visible {
-  animation: flip-in-x 0.8s both;
 }
 .listing-layout {
   display: grid;
@@ -1119,16 +1106,6 @@ textarea {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-@keyframes flip-in-x {
-  from {
-    transform: perspective(400px) rotateX(35deg);
-    opacity: 0;
-  }
-  to {
-    transform: perspective(400px) rotateX(0);
-    opacity: 1;
   }
 }
 @media (min-width: 1301px) {
@@ -1481,11 +1458,15 @@ textarea {
     margin-bottom: 18px;
   }
   .contact-strip {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     width: 100%;
   }
   .contact-strip > a {
     padding: 23px 30px;
+  }
+  .contact-strip > a > div {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
   .contact-strip .icon {
     font-size: 42px;
@@ -1561,9 +1542,6 @@ textarea {
   }
   .about-image {
     min-height: 280px;
-  }
-  .contact-content {
-    padding-top: 45px;
   }
   .contact-form-section {
     padding: 50px 0;

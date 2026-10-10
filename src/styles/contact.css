@@ -1,0 +1,319 @@
+.contact-details {
+  --contact-tint: #f3f8fc;
+  padding-block: 60px 64px;
+  color: #444;
+}
+.contact-details h2 {
+  font-size: clamp(26px, 2.3vw, 34px);
+  margin-bottom: 14px;
+}
+.contact-details h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.contact-details h4 {
+  font-size: 19px;
+  margin: 0 0 4px;
+}
+.contact-details p {
+  margin: 0;
+}
+.contact-intro {
+  margin-bottom: 30px;
+  max-width: 760px;
+}
+.booking-options {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr);
+  gap: 28px;
+  align-items: stretch;
+}
+.phone-panel {
+  padding: 36px;
+  border-radius: 12px;
+  background: var(--link);
+  color: #fff;
+}
+.contact-details .phone-panel h3 {
+  color: inherit;
+  margin-bottom: 22px;
+}
+.contact-phone {
+  display: inline-block;
+  color: #fff;
+  font-size: clamp(30px, 3vw, 44px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  padding-block: 4px;
+}
+.contact-phone:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.phone-panel :focus-visible {
+  outline-color: #fff;
+}
+.calling-hours {
+  margin-top: 26px;
+  padding-top: 23px;
+  border-top: 1px solid #ffffff50;
+}
+.calling-hours span,
+.calling-hours strong {
+  display: block;
+}
+.calling-hours strong {
+  font-size: 26px;
+  line-height: 1.4;
+  margin-block: 4px 18px;
+  font-weight: 500;
+}
+.phone-panel p {
+  max-width: 300px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.online-panel {
+  padding: 34px 36px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.booking-provider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 20px;
+  border-top: 1px solid var(--line);
+}
+.booking-provider p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.contact-action {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 44px;
+  border: 2px solid var(--link);
+  border-radius: 30px;
+  padding: 7px 19px;
+  color: var(--link);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.contact-action:hover {
+  background: var(--link);
+  color: #fff;
+}
+.contact-action span {
+  font-size: 20px;
+  line-height: 1;
+}
+.booking-help {
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+}
+.booking-help summary {
+  padding-block: 18px 4px;
+  cursor: pointer;
+  color: var(--link);
+  font-weight: 500;
+}
+.booking-help > div {
+  padding-top: 18px;
+}
+.booking-help ol {
+  padding-left: 24px;
+  margin-block: 12px;
+}
+.booking-help a,
+.contact-text-link {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.booking-help a:hover,
+.contact-text-link:hover {
+  color: var(--link);
+  text-decoration-thickness: 2px;
+}
+.referral-note {
+  margin-top: 24px;
+  background: var(--contact-tint);
+  border-left: 3px solid var(--blue);
+  padding: 22px 26px;
+}
+.contact-details .referral-note h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.referral-note p {
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 1050px;
+}
+.contact-coordinates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-block: 52px 64px;
+  padding-block: 32px;
+  border-block: 1px solid var(--line);
+}
+.contact-coordinates > div {
+  min-width: 0;
+}
+.contact-coordinates > div + div {
+  padding-left: 48px;
+  border-left: 1px solid var(--line);
+}
+.contact-details .contact-coordinates h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.contact-coordinates address {
+  font-style: normal;
+  line-height: 1.7;
+}
+.contact-coordinates address strong {
+  font-size: 23px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.contact-emails {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.7;
+}
+.contact-emails a {
+  display: inline-block;
+  color: var(--link);
+  overflow-wrap: anywhere;
+}
+.contact-emails a:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+.contact-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 12px;
+  font-size: 15px;
+}
+.visit-guidelines {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  padding: 32px;
+  background: var(--contact-tint);
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.contact-details .visit-guidelines h3 {
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+.visit-guidelines ul {
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+.visit-guidelines li {
+  padding-left: 4px;
+  margin-bottom: 12px;
+}
+.visit-guidelines li:last-child {
+  margin-bottom: 0;
+}
+.visit-guidelines li::marker {
+  color: var(--link);
+}
+.contact-map-section {
+  padding-bottom: 64px;
+  scroll-margin-top: 20px;
+}
+#contact-form {
+  scroll-margin-top: 20px;
+}
+.contact-map-section h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+.contact-map-section .contact-map {
+  margin-top: 26px;
+  border-radius: 12px;
+  height: 380px;
+  background: #f3f8fc;
+}
+@media (max-width: 1100px) {
+  .booking-options {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.2fr);
+    gap: 20px;
+  }
+  .phone-panel,
+  .online-panel {
+    padding: 28px;
+  }
+  .booking-provider {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+@media (max-width: 700px) {
+  .contact-details {
+    padding-block: 40px;
+  }
+  .booking-options,
+  .contact-coordinates,
+  .visit-guidelines {
+    grid-template-columns: 1fr;
+  }
+  .phone-panel,
+  .online-panel {
+    padding: 26px;
+  }
+  .contact-phone {
+    font-size: 34px;
+  }
+  .booking-provider {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .contact-action {
+    padding-inline: 16px;
+  }
+  .referral-note {
+    padding: 20px;
+  }
+  .contact-coordinates {
+    gap: 26px;
+    margin-block: 36px 40px;
+    padding-block: 26px;
+  }
+  .contact-coordinates > div + div {
+    padding: 26px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  .visit-guidelines {
+    padding: 24px;
+    gap: 28px;
+  }
+  .contact-map-section {
+    padding-bottom: 40px;
+  }
+  .contact-map-section .contact-map {
+    height: 300px;
+  }
+}

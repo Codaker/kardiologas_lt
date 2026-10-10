@@ -76,7 +76,7 @@ Components render these values with `Image` from `astro:assets`. Astro reads dim
 - 24 content routes, including both patient-index spellings, category archives, numeric article URLs, the slider's `/paslaugos-ir-tyrimai/` link, and patient-index page 2. See `docs/route-manifest.json`.
 - The two page-2 listings were reconstructed from the recovered category archive because their direct captures were unavailable.
 - Original logos, doctor/equipment photos, video thumbnail, Rubik/Open Sans fonts, blue/white layout, sidebars and footer structure.
-- Three-slide fade carousel, animated letters and opposing slide-in headings, dropdown transitions, mobile navigation, accordion expansion, play-button hover, video dialog, contact-section flip-in, and smooth back-to-top behavior. Reduced-motion preferences disable motion and autoplay; carousel playback pauses on hover/focus and can be paused manually.
+- Three-slide fade carousel, animated letters and opposing slide-in headings, dropdown transitions, mobile navigation, accordion expansion, play-button hover, video dialog, and smooth back-to-top behavior. Reduced-motion preferences disable motion and autoplay; carousel playback pauses on hover/focus and can be paused manually.
 - Static search, including old `/?s=…` links, and existing query links recorded in each page's `queryAliases`. These redirects require JavaScript. `/feed/` points to the static RSS feed.
 - The contact form opens a **mailto draft** in the visitor's email app; it does not submit or claim to send a message. Original booking links are retained.
 - Maps and YouTube players still require their external providers. They load lazily or on interaction.

@@ -10,6 +10,7 @@ import Slider from '../components/Slider.astro';
 import VideoFaq from '../components/VideoFaq.astro';
 import Sidebar from '../components/Sidebar.astro';
 import ContactForm from '../components/ContactForm.astro';
+import ContactDetails from '../components/ContactDetails.astro';
 import { withBase } from '../lib/urls';
 import Icon from '../components/Icon.astro';
 import ArticleImage from '../components/ArticleImage.astro';
@@ -153,17 +154,25 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
         <h1>{page.data.title}</h1>
         <p>Registruokitės telefonu arba internetu</p>
       </div>
-      <article class="container contact-content prose reveal-flip">
+      <ContactDetails>
         <Content />
-      </article>
+      </ContactDetails>
+      <section
+        class="container contact-map-section"
+        id="kontaktai-zemelapis"
+        aria-labelledby="zemelapio-antraste"
+      >
+        <h2 id="zemelapio-antraste">Kaip mus rasti</h2>
+        <p>{site.address}, Lietuva</p>
+        <iframe
+          class="contact-map"
+          src={site.map}
+          title="Pulsas – Sodų gatvė 56, Kaunas"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        />
+      </section>
       <ContactForm />
-      <iframe
-        class="contact-map"
-        src={site.map}
-        title="Pulsas – Sodų gatvė 56, Kaunas"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      />
     </>
   )}
   {page.data.type === 'listing' && (
@@ -262,18 +271,3 @@ const listingRoot = page.data.path.split('/page/')[0].replace(/\/$/, '') + '/';
     </>
   )}
 </SiteLayout>
-<script>
-  const reveal = document.querySelector('.reveal-flip');
-  if (reveal && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          reveal.classList.add('is-visible');
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.05 },
-    );
-    observer.observe(reveal);
-  }
-</script>
