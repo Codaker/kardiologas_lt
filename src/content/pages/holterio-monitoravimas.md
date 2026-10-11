@@ -19,7 +19,7 @@ illustration:
   alt: 'Holterio monitorius paros EKG registruoti'
 ---
 
-Šio tyrimo metu pacientui ant krūtinės pritvirtinami 3 ar4 lipdukai-elektrodai, kurie sujungiami su mažu aparatuku pakabinamu ant kaklo ar ant juosmens. Pacientas 24 – 48 val. ar ilgiau nešioja aparatą, registruojamas širdies rimas (elektrokardiograma). Po to jis nuimamas, prijungiamas prie kompiuterio ir specialia programa analizuojami duomenys. Nustatoma kiek ir kokios rūšies ritmo sutrikimų buvo per tiriamą laikotarpį, kokį tolimesnį gydymą reikia paskirti.
+Šio tyrimo metu pacientui ant krūtinės pritvirtinami 3 ar 4 lipdukai-elektrodai, kurie sujungiami su mažu aparatuku pakabinamu ant kaklo ar ant juosmens. Pacientas 24 – 48 val. ar ilgiau nešioja aparatą, registruojamas širdies rimas (elektrokardiograma). Po to jis nuimamas, prijungiamas prie kompiuterio ir specialia programa analizuojami duomenys. Nustatoma kiek ir kokios rūšies ritmo sutrikimų buvo per tiriamą laikotarpį, kokį tolimesnį gydymą reikia paskirti.
 
 Širdis – nuostabus biologinis varikliukas, kurio raumuo susitraukia apytikriai net 100000 (šimtą tūkstančių kartų !!!) per parą. Tyrimo metu nustatoma kaip (“per parą”-šitą išbraukti) kinta pulsas, ar ritmiškai plaka širdis ar yra „permušimų” t.y. ekstrasistolių. Pvz. jei yra 1000 ekstrasistolių atrodytų skaičius didelis, bet tai sudarytų tik apie 1 proc. visų širdies suplakimų ir mediciniškai vertinant, nėra reikšmingas. Net 2000 – 3000 dar nėra labai dideli skaičiai. Jei jų yra 10000 ar daugiau sprendžiamas klausimas ar gydyti spec. antiaritminiais vaistais ar taikyti vadinamąjį intervencinį gydymą – radiodažnuminę abliaciją (RDA arba širdies aritmijos židinio panaikinimas kateterių ir šilumos pagalba) ar paveikti šalčiu (krioabliacija).
 
