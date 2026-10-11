@@ -98,35 +98,3 @@ Su siuntimu priimami tik pacientai, kurių įstaiga yra sudariusi sutartį su li
 
 </div>
 </section>
-
-<section class="visit-section" aria-labelledby="pries-atvykstant">
-<div class="contact-intro">
-
-<h2 id="pries-atvykstant">Prieš atvykstant</h2>
-
-Prašome susipažinti su kabineto pacientų priėmimo ir higienos taisyklėmis.
-
-</div>
-<div class="visit-guidelines">
-<section aria-labelledby="priemimo-salygos">
-
-<h3 id="priemimo-salygos">Pacientų priėmimo sąlygos</h3>
-
-Dėl COVID-19 ir kitų virusinių ligų grėsmės:
-
-- **Nekonsultuojame** karščiuojančių, kosinčių, čiaudinčių, sloguojančių pacientų.
-- **Nekonsultuojame** sergančių ar persirgusių bet kokia virusine infekcija iki 0,5 mėnesio laikotarpiu.
-- **Nekonsultuojame** turėjusių tiesioginių kontaktų su sergančiu COVID-19 virusu, karščiuojančių virš 37,0 °C.
-
-</section>
-<section aria-labelledby="vizito-tvarka">
-
-<h3 id="vizito-tvarka">Vizito tvarka</h3>
-
-- Atvykstant reikia **dezinfekuoti rankas**.
-- Pacientai priimami **kas 75 minutes**.
-- Į patalpas ir kabinetą leidžiama užeiti tik **vienam pacientui ir vienam lydinčiam asmeniui**.
-
-</section>
-</div>
-</section>
