@@ -4,7 +4,7 @@ import { mkdir, writeFile, readFile, stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { resolve, extname, sep } from 'node:path';
 // Serve dist with GitHub Pages directory semantics; no Astro development fallback.
-const prefix = (process.env.BASE_PATH || '/kardiologas_lt').replace(/\/$/, '');
+const prefix = (process.env.BASE_PATH || '/').replace(/\/$/, '');
 const root = resolve('dist');
 const mime = {
   '.html': 'text/html',

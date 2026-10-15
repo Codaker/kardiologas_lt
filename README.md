@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open the URL printed by Astro, including `/kardiologas_lt/`.
+Open the URL printed by Astro. The site is served at `/`.
 
 ```sh
 npm run check
@@ -22,31 +22,34 @@ npm run preview
 
 ## GitHub Pages
 
-The workflow in `.github/workflows/deploy.yml` builds, checks local links, uploads `dist/`, and deploys pushes to `main` or `master`. In the repository's **Settings → Pages**, select **GitHub Actions** as the source. No deployment has been performed by this migration.
+The workflow in `.github/workflows/deploy.yml` builds, checks local links, uploads `dist/`, and deploys pushes to `main` or `master`. In the repository's **Settings → Pages**, select **GitHub Actions** as the source and set the custom domain to `kardiologas.lt`.
 
-Defaults target `https://codaker.github.io/kardiologas_lt/`. Every local link, Markdown image, embedded HTML asset, and CSS/font URL supports this base path. This follows the [Astro GitHub Pages deployment model](https://docs.astro.build/en/guides/deploy/github/).
+Local builds, verification scripts and the deployment workflow default to `https://kardiologas.lt` with the root base path `/`. No repository Actions variables are required for production. Every local link, Markdown image, embedded HTML asset, and CSS/font URL also supports an optional preview base path. This follows the [Astro GitHub Pages deployment model](https://docs.astro.build/en/guides/deploy/github/).
 
-To publish on `https://kardiologas.lt`, configure the Pages custom domain and its DNS, then set these repository Actions variables:
+Repository Actions variables can override these defaults. If `SITE_URL` or `BASE_PATH` already contains the old GitHub project settings, remove those variables or update them to the production values before deploying:
 
-| Variable    | Original domain          | GitHub project site         |
-| ----------- | ------------------------ | --------------------------- |
-| `SITE_URL`  | `https://kardiologas.lt` | `https://codaker.github.io` |
-| `BASE_PATH` | `/`                      | `/kardiologas_lt`           |
+| Variable    | Production default       | Optional GitHub project preview |
+| ----------- | ------------------------ | ------------------------------- |
+| `SITE_URL`  | `https://kardiologas.lt` | `https://codaker.github.io`     |
+| `BASE_PATH` | `/`                      | `/kardiologas_lt`               |
 
-The custom hostname requires domain/DNS configuration. Environment variables also work for local builds. In PowerShell:
+The custom hostname still requires Pages and DNS configuration; changing build settings does not configure DNS. This GitHub Actions deployment does not need a repository `CNAME` file. See [GitHub's custom domain instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
+
+Environment variables also work for local builds. To build and verify the optional GitHub project preview in PowerShell:
 
 ```powershell
-$env:SITE_URL='https://kardiologas.lt'
-$env:BASE_PATH='/'
+$env:SITE_URL='https://codaker.github.io'
+$env:BASE_PATH='/kardiologas_lt'
 npm run build
 npm run verify
+Remove-Item Env:SITE_URL, Env:BASE_PATH
 ```
 
 ### Search indexing
 
-Only builds with `SITE_URL` on the exact origin `https://kardiologas.lt` allow indexing. The default GitHub Pages build and other deployment origins include `noindex,follow` on every HTML page and omit the sitemap files and discovery links. Production builds retain `noindex` for search and error pages.
+Only builds with `SITE_URL` on the exact origin `https://kardiologas.lt` allow indexing, including the default build. Builds explicitly targeting the GitHub project preview or other deployment origins include `noindex,follow` on every HTML page and omit the sitemap files and discovery links. Production builds retain `noindex` for search and error pages.
 
-For production, set `SITE_URL=https://kardiologas.lt` and `BASE_PATH=/` as shown above. These rules are generated at build time: each host must serve its matching build, or the alternate hostname must redirect to the production domain. The same static HTML cannot provide different robots directives based on the request hostname.
+Production uses `SITE_URL=https://kardiologas.lt` and `BASE_PATH=/` by default. These rules are generated at build time: each host must serve its matching build, or the alternate hostname must redirect to the production domain. The same static HTML cannot provide different robots directives based on the request hostname.
 
 Keep preview pages crawlable so search engines can read the `noindex` directive; blocking them in `robots.txt` prevents that. See [Google's noindex guidance](https://developers.google.com/search/docs/crawling-indexing/block-indexing). Existing search results can take time to disappear after the updated site is deployed and recrawled.
 

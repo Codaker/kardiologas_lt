@@ -1,7 +1,7 @@
 /** Apply local base paths and new-tab behavior to Markdown and embedded HTML links. */
 export function localLinks({
   base = '/',
-  site = 'https://codaker.github.io',
+  site = 'https://kardiologas.lt',
 } = {}) {
   const prefix = base.replace(/\/$/, '');
   const origin = new URL(site).origin;
